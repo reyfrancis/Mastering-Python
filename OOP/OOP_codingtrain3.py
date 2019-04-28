@@ -57,8 +57,8 @@ print('\n')
 #There is really no rule to what should be named for the first argument. But it became a convention
 #by programmers to name the first argument of class method as 'cls'
 #See 'def change_raise_percentage'
-Employee.change_raise_percentage(30)
-print(Employee.raise_percetage)
+employee1.change_raise_percentage(30)
+print(employee1.raise_percetage)
 print('\n')
 
 
