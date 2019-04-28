@@ -41,7 +41,7 @@ class Employee:
 class Developer(Employee):
 #Next is we call __init__ and pass all the arguments we would want to have
     def __init__(self, first_name, last_name, pay, prog_lang, github_repo)
-    #Then, we INHERIT from our Employee class all our ATTRIBUTES that we want to have from them
+    #Then, we INHERIT from our PARENT CLASS / Employee class all our ATTRIBUTES that we want to have from them
     super().__init__(first_name, last_name, pay)    #take note that we are not passing 'self' in this line
     #Although, we could do this in a more familiar fashion
     # Employee.__init__(self, first_name, last_name, pay)
