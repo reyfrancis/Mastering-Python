@@ -68,3 +68,13 @@ hr_1.add_employees(eng_1)
 hr_1.print_all_employees()
 print('\n')
 
+
+
+#isinstance() and issubclass()
+#We can use this functions to know if an instance is an instance of a class
+#and a class is a subclass of a parent's class
+
+print(isinstance(dev_1, Developer))
+print(isinstance(eng_1, Developer))
+print(issubclass(Developer, Employee))
+print(issubclass(Employee, Developer))
