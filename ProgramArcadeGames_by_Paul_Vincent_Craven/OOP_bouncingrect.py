@@ -18,7 +18,7 @@ class Rectangle:
         self.dir_x = random.choice([1, -1])
         self.dir_y = random.choice([1, -1])
         self.speed = 200/size
-    def check_Peri(self):
+    # def check_Peri(self):
         
     def move(self):
             if self.x >= (400-self.size) or self.x <= 0:
@@ -66,13 +66,12 @@ class Game(Rectangle):
             self.clock.tick(self.tick)
 
 
-
-
-
 rect_red = Rectangle(RED, 50)
 rect_blue = Rectangle(BLUE, 70)
 rect_white = Rectangle(WHITE, 30)
+rect_green1 = Rectangle(GREEN, 20)
+rect_green2 = Rectangle(GREEN, 10)
 my_game = Game(BLACK, 'Bouncing Rectangles', 400, 500, 60)
 my_game.makeScreen()
-my_game.main([rect_red, rect_blue, rect_white])
+my_game.main([rect_red, rect_blue, rect_white, rect_green1, rect_green2])
 
