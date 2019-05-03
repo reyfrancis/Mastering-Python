@@ -18,7 +18,6 @@ class Rectangle:
         self.dir_x = random.choice([1, -1])
         self.dir_y = random.choice([1, -1])
         self.speed = 200/size
-    # def check_Peri(self):
         
     def move(self):
             if self.x >= (400-self.size) or self.x <= 0:
@@ -62,6 +61,9 @@ class Game(Rectangle):
                 self.rect_list[i].move()
                 pygame.draw.rect(self.screen, self.rect_list[i].color, [self.rect_list[i].x, self.rect_list[i].y, 
                     self.rect_list[i].size, self.rect_list[i].size])
+                #Take note that we enclose the 3rd argument in a bracket
+                #3rd argument must be in a 4 value sequence.
+                
             pygame.display.flip()
             self.clock.tick(self.tick)
 
