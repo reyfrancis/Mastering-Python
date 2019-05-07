@@ -1,3 +1,11 @@
+'''@TODO: 
+1. Meriam's Dynamics Book Problem 271 in Chapter 3. Solve for the correct values.
+2. Rewrite the implementation for balls > 2
+4. Fix bug when COEFF_RESTITUTION != 1
+3. Make a comprehensive tutorial at Github 
+'''
+
+
 import pygame, random, math
 import numpy as np
 
@@ -8,7 +16,7 @@ BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
-COEFF_RESTITUTION = 0.99
+COEFF_RESTITUTION = 1
 PI = math.pi
 
 class Circle:
@@ -18,8 +26,8 @@ class Circle:
         self.radius = radius
         self.x = random.randrange(radius, my_game.width-radius)
         self.y = random.randrange(radius, my_game.height-radius)
-        self.velocity_x = (10/radius + random.randrange(1,5))*random.choice([1, -1])
-        self.velocity_y = (10/radius + random.randrange(1,5))*random.choice([1, -1])
+        self.velocity_x = (40/radius + random.randrange(1,5))*random.choice([1, -1])
+        self.velocity_y = (40/radius + random.randrange(1,5))*random.choice([1, -1])
         self.abs_velocity = math.sqrt(pow(self.velocity_x, 2) + pow(self.velocity_y, 2))
         self.mass = radius/10
     
@@ -72,7 +80,7 @@ class Game(Circle):
                     self.circle_list[k].x, self.circle_list[k].y = my_calculation.ConvertAxis(self.circle_list[k].x, self.circle_list[k].y)
 
                     CenterDistance = math.hypot(self.circle_list[i].x - self.circle_list[k].x, self.circle_list[i].y - self.circle_list[k].y)
-                    if CenterDistance < self.circle_list[i].radius + self.circle_list[k].radius:
+                    if CenterDistance <= self.circle_list[i].radius + self.circle_list[k].radius:
 
                         #Get the angle of collision between two circles, that is, the arctangent of their respective centers with respect to positive x-axis
                         CenterAngle = math.atan2(self.circle_list[k].y - self.circle_list[i].y, self.circle_list[k].x - self.circle_list[i].x)
@@ -89,6 +97,10 @@ class Game(Circle):
                         self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, CenterAngle)
                         self.circle_list[k].velocity_x, self.circle_list[k].velocity_y = my_calculation.RotateAxis(self.circle_list[k].velocity_x, self.circle_list[k].velocity_y, CenterAngle)
 
+                        #Errors from Meriam Dynamics Book
+                        # self.circle_list[i].velocity_x*=-1
+                        # self.circle_list[k].velocity_x*=-1
+
                         velocity_update = [0, 0]
 
                         velocity_update[1] = (self.circle_list[i].mass*self.circle_list[i].velocity_y+self.circle_list[k].mass*self.circle_list[k].velocity_y+(self.circle_list[i].mass*self.circle_list[i].velocity_y-self.circle_list[i].mass*self.circle_list[k].velocity_y)*COEFF_RESTITUTION)/(self.circle_list[i].mass+self.circle_list[k].mass) 
@@ -101,14 +113,20 @@ class Game(Circle):
                         # self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, -CenterAngle)
                         # self.circle_list[k].velocity_x, self.circle_list[k].velocity_y = my_calculation.RotateAxis(self.circle_list[k].velocity_x, self.circle_list[k].velocity_y, -CenterAngle)
 
-                    #Convert coordinates to Pygame Plane
-                    self.circle_list[i].x, self.circle_list[i].y = my_calculation.ConvertAxis(self.circle_list[i].x, self.circle_list[i].y)
-                    self.circle_list[k].x, self.circle_list[k].y = my_calculation.ConvertAxis(self.circle_list[k].x, self.circle_list[k].y)
-                    
-                    # self.circle_list[i].move()
-                    # self.circle_list[k].move()
-            #self.circle_list.remove(self.circle_list[k])
-            #self.circle_list.remove(self.circle_list[i])
+                        #Errors from Meriam Dynamics Book
+                        # self.circle_list[i].velocity_x*=-1
+                        # self.circle_list[k].velocity_x*=-1
+
+
+                        #Convert coordinates to Pygame Plane
+                        self.circle_list[i].x, self.circle_list[i].y = my_calculation.ConvertAxis(self.circle_list[i].x, self.circle_list[i].y)
+                        self.circle_list[k].x, self.circle_list[k].y = my_calculation.ConvertAxis(self.circle_list[k].x, self.circle_list[k].y)
+
+                        # self.circle_list[i].move()
+                        # self.circle_list[k].move()
+
+                        break
+                        break
 
     def main(self, arg_list=None):
         done = False
