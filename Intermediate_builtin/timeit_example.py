@@ -1,7 +1,6 @@
-#Timeit module
-#Sometimes we want our codes to run as fast as they can.
-#And we optimize our codes for such problem, one way of optimizing it is to actually 
-#time it. 
+''' Sometimes we want our codes to run as fast as they can. 
+And we optimize our codes for such problem, one way of optimizing it is to actually 
+time it. ''' 
 
 import timeit
 

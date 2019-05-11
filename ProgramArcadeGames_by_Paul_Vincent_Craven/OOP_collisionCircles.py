@@ -87,11 +87,13 @@ class Game(Circle):
 
                         #Correcting the arctangent function so that it outputs values from 0 - 2*pi
                         CenterAngle = my_calculation.InvTrigCorrection(CenterAngle)
+                        print(math.degrees(CenterAngle))
 
                         #The CenterAngle is the angle between the line between two centers with respect to the positive x-axis.
                         #We transform that into angle theta, that is, how much angle does the y-axis rotated to become y'-axis
                         #or x-axis to be x'-axis.
                         CenterAngle-=PI/2
+                        CenterAngle*=-1
 
                         #Convert the vector velocity from (x, y) to (x', y') 
                         self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, CenterAngle)
@@ -110,8 +112,8 @@ class Game(Circle):
                         self.circle_list[k].velocity_y = velocity_update[1]
  
                         # #Convert the vector velocity from (x, y) to (x', y') 
-                        # self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, -CenterAngle)
-                        # self.circle_list[k].velocity_x, self.circle_list[k].velocity_y = my_calculation.RotateAxis(self.circle_list[k].velocity_x, self.circle_list[k].velocity_y, -CenterAngle)
+                        self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, -CenterAngle)
+                        self.circle_list[k].velocity_x, self.circle_list[k].velocity_y = my_calculation.RotateAxis(self.circle_list[k].velocity_x, self.circle_list[k].velocity_y, -CenterAngle)
 
                         #Errors from Meriam Dynamics Book
                         # self.circle_list[i].velocity_x*=-1
@@ -124,6 +126,8 @@ class Game(Circle):
 
                         # self.circle_list[i].move()
                         # self.circle_list[k].move()
+
+                        #PRINT INPUT and OUTPUT VALUES TO DEBUG
 
                         break
                         break
@@ -182,6 +186,8 @@ class Calculations(Game):
     def InvTrigCorrection(cls, angle):
         if angle < 0:
             angle+=2*PI
+        if angle > PI and angle < 2*PI:
+            angle-=PI
         return angle
 
 

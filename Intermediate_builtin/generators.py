@@ -1,6 +1,6 @@
-#Generators dont return values. They are used to hold values
-#inside a function without calling a variable
-#A very short and simple example to is to hold the 3 words and print them out.
+''' Generators dont return values. They are used to hold values 
+inside a function without calling a variable 
+A very short and simple example to is to hold the 3 words and print them out. '''
 
 def simple_gen():
     yield 'Oh'
@@ -14,10 +14,9 @@ for i in simple_gen():
 print('\n')
 
 
-
 CORRECT_COMBO = (3, 6, 1)
-#This part is not really about generators but how to minimize
-#the time in iterating to find a coreect value instead of
+# This part is not really about generators but how to minimize
+# the time in iterating to find a correct value instead of
 
 # for c1 in range(10):
 #     for c2 in range(10):
@@ -38,7 +37,7 @@ for c1 in range(10):
         		found_combo = True
         		break
 
-#This is another example of holding values inside a function using yield
+# This is another example of holding values inside a function using yield
 def combo_gen():
     for c1 in range(10):
         for c2 in range(10):

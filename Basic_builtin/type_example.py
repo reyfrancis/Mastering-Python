@@ -1,5 +1,4 @@
-#Type
-#One of the most important function in python is type
+'''One of the most important function in python is type'''
 
 PI = 3.1416
 x = 0
