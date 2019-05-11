@@ -1,6 +1,6 @@
-#Passing INSTANCE as ARGUMENT in another INSTANCE
-#Say we want to have HR in our company and they take note of every Employee
-#Now we want to find out all the names of the employee in the company that was hired
+''' Passing INSTANCE as ARGUMENT in another INSTANCE.
+Say we want to have HR in our company and they take note of every Employee.
+Now we want to find out all the names of the employee in the company that was hired '''
 
 class Employee:
     raise_percentage = 5
@@ -27,10 +27,10 @@ class HR(Employee):
     raise_percentage = 8
     def __init__(self, first_name, last_name, pay, hired_employees=None):
 
-        #Take note! An important thing to remember. Here hired_employees is a list
-        #but is set default to 'None'. And later will be changed into an empty list 'self.hired_employees = []'
-        #The reason why we did not set the ARGUMENT into just an empty list is: It's not recommended
-        #to pass mutable data types such as list and dict in the default argument or in the argument.
+        # Take note! An important thing to remember. Here hired_employees is a list
+        # but is set default to 'None'. And later will be changed into an empty list 'self.hired_employees = []'
+        # The reason why we did not set the ARGUMENT into just an empty list is: It's not recommended
+        # to pass mutable data types such as list and dict in the default argument or in the argument.
 
         super().__init__(first_name, last_name, pay)
         if hired_employees is None:
@@ -55,13 +55,13 @@ dev_2 = Developer('Lebron', 'James', 60, 'C++', 7)
 eng_1 = Engineer('Steph', 'Curry', 100, 'AutoCad')
 
 hr_1 = HR('Queen', 'Sarah', 30, [employee_1])
-#Do not forget to enclose the last argument in a list, so that we can define the argument as list
+# Do not forget to enclose the last argument in a list, so that we can define the argument as list.
 
 hr_1.print_all_employees()
 print('\n')
 
 hr_1.add_employees(employee_2)
-#We dont enclose them in brackets anymore since we are appending them into the existing list 'self.hired_employees'
+# We dont enclose them in brackets anymore since we are appending them into the existing list 'self.hired_employees'.
 hr_1.add_employees(dev_1)
 hr_1.add_employees(dev_2)
 hr_1.add_employees(eng_1)
