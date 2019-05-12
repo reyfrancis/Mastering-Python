@@ -1,4 +1,4 @@
-'''@TODO: 
+''' @TODO: 
 1. Meriam's Dynamics Book Problem 271 in Chapter 3. Solve for the correct values.
 2. Rewrite the implementation for balls > 2
 4. Fix bug when COEFF_RESTITUTION != 1
@@ -9,7 +9,7 @@
 import pygame, random, math
 import numpy as np
 
-#Constants
+# Constants
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
@@ -20,7 +20,7 @@ COEFF_RESTITUTION = 1
 PI = math.pi
 
 class Circle:
-    #Give birth to a circle!
+    # Give birth to a circle!
     def __init__(self, color, radius):  
         self.color = color
         self.radius = radius
@@ -33,21 +33,21 @@ class Circle:
     
 
     def move(self):
-        #Convert coordinates into Cartesian Plane
+        # Convert coordinates into Cartesian Plane.
         self.x, self.y = my_calculation.ConvertAxis(self.x, self.y)
 
-        #Check if it hits the wall
+        # Check if it hits the wall.
         if self.x > (my_game.width-self.radius) or self.x < self.radius:
             self.velocity_x*=-1
 
         if self.y > (my_game.height-self.radius) or self.y < self.radius:
             self.velocity_y*=-1
 
-        #Do calculations in Cartesian Coordinate Plane
+        # Do calculations in Cartesian Coordinate Plane.
         self.x+=self.velocity_x
         self.y+=self.velocity_y
 
-        #Convert coordinates to Pygame Plane
+        # Convert coordinates to Pygame Plane.
         self.x, self.y = my_calculation.ConvertAxis(self.x, self.y)
 
 class Game(Circle):
@@ -72,36 +72,32 @@ class Game(Circle):
         for i in range(len(self.circle_list)):
             k = 0
             for k in range(len(self.circle_list)):
-                #Check if two different circles are selected
+                # Check if two different circles are selected.
                 if self.circle_list[i] != self.circle_list[k]:
 
-                    #Convert coordinates in Cartesian Plane
+                    # Convert coordinates in Cartesian Plane. 
                     self.circle_list[i].x, self.circle_list[i].y = my_calculation.ConvertAxis(self.circle_list[i].x, self.circle_list[i].y)
                     self.circle_list[k].x, self.circle_list[k].y = my_calculation.ConvertAxis(self.circle_list[k].x, self.circle_list[k].y)
 
                     CenterDistance = math.hypot(self.circle_list[i].x - self.circle_list[k].x, self.circle_list[i].y - self.circle_list[k].y)
                     if CenterDistance <= self.circle_list[i].radius + self.circle_list[k].radius:
 
-                        #Get the angle of collision between two circles, that is, the arctangent of their respective centers with respect to positive x-axis
+                        # Get the angle of collision between two circles, that is, the arctangent of their respective centers with respect to positive x-axis.
                         CenterAngle = math.atan2(self.circle_list[k].y - self.circle_list[i].y, self.circle_list[k].x - self.circle_list[i].x)
 
-                        #Correcting the arctangent function so that it outputs values from 0 - 2*pi
+                        # Correcting the arctangent function so that it outputs values from 0 - 2*pi.
                         CenterAngle = my_calculation.InvTrigCorrection(CenterAngle)
                         print(math.degrees(CenterAngle))
 
-                        #The CenterAngle is the angle between the line between two centers with respect to the positive x-axis.
-                        #We transform that into angle theta, that is, how much angle does the y-axis rotated to become y'-axis
-                        #or x-axis to be x'-axis.
+                        # The CenterAngle is the angle between the line between two centers with respect to the positive x-axis.
+                        # We transform that into angle theta, that is, how much angle does the y-axis rotated to become y'-axis
+                        # or x-axis to be x'-axis.
                         CenterAngle-=PI/2
                         CenterAngle*=-1
 
-                        #Convert the vector velocity from (x, y) to (x', y') 
+                        # Convert the vector velocity from (x, y) to (x', y').
                         self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, CenterAngle)
                         self.circle_list[k].velocity_x, self.circle_list[k].velocity_y = my_calculation.RotateAxis(self.circle_list[k].velocity_x, self.circle_list[k].velocity_y, CenterAngle)
-
-                        #Errors from Meriam Dynamics Book
-                        # self.circle_list[i].velocity_x*=-1
-                        # self.circle_list[k].velocity_x*=-1
 
                         velocity_update = [0, 0]
 
@@ -111,23 +107,18 @@ class Game(Circle):
                         self.circle_list[i].velocity_y = velocity_update[0]
                         self.circle_list[k].velocity_y = velocity_update[1]
  
-                        # #Convert the vector velocity from (x, y) to (x', y') 
+                        # Convert the vector velocity from (x, y) to (x', y').
                         self.circle_list[i].velocity_x, self.circle_list[i].velocity_y = my_calculation.RotateAxis(self.circle_list[i].velocity_x, self.circle_list[i].velocity_y, -CenterAngle)
                         self.circle_list[k].velocity_x, self.circle_list[k].velocity_y = my_calculation.RotateAxis(self.circle_list[k].velocity_x, self.circle_list[k].velocity_y, -CenterAngle)
-
-                        #Errors from Meriam Dynamics Book
-                        # self.circle_list[i].velocity_x*=-1
-                        # self.circle_list[k].velocity_x*=-1
-
-
-                        #Convert coordinates to Pygame Plane
+ 
+                        # Convert coordinates to Pygame Plane.
                         self.circle_list[i].x, self.circle_list[i].y = my_calculation.ConvertAxis(self.circle_list[i].x, self.circle_list[i].y)
                         self.circle_list[k].x, self.circle_list[k].y = my_calculation.ConvertAxis(self.circle_list[k].x, self.circle_list[k].y)
 
                         # self.circle_list[i].move()
                         # self.circle_list[k].move()
 
-                        #PRINT INPUT and OUTPUT VALUES TO DEBUG
+                        # @TODO: PRINT INPUT and OUTPUT VALUES TO DEBUG
 
                         break
                         break
@@ -140,7 +131,7 @@ class Game(Circle):
                     if event.key == pygame.K_ESCAPE:
                         done = True
 
-            #TODO: Dont have to rerun this code every time
+            # @TODO: Dont have to rerun this code every time.
             if arg_list is None:
                 self.circle_list = []
             else:
@@ -162,15 +153,15 @@ class Calculations(Game):
     def __init__(self, color, title, width, height, fps):
         super().__init__(color, title, width, height, fps)
 
-    #Change the position of the origin from the uppermost left to lowermost left.
-    #Basically, the origin position can't be change but we can convert every coordinate in our traditional
-    #Cartesian coordinate system to work with Pygame's coordinate system.
-    #As a quick example. Say we want to draw a circle in 50, 50. We should get Pygame's coordinate equivalent by:
-    #x, y = Pygame_coorEquivalent(class, 50, 50)
+    # Change the position of the origin from the uppermost left to lowermost left.
+    # Basically, the origin position can't be change but we can convert every coordinate in our traditional
+    # Cartesian coordinate system to work with Pygame's coordinate system.
+    # As a quick example. Say we want to draw a circle in 50, 50. We should get Pygame's coordinate equivalent by:
+    # x, y = Pygame_coorEquivalent(class, 50, 50)
     def ConvertAxis(self, x, y):
         return x, self.height - y
 
-    #Convert the values of x, y to rotated axis or to the line of contact.
+    # Convert the values of x, y to rotated axis or to the line of contact.
     @classmethod  
     def RotateAxis(cls, x, y, angle):
         A = np.array([[math.cos(angle), -math.sin(angle)],
@@ -179,9 +170,9 @@ class Calculations(Game):
 
         return np.dot(A, X)
 
-    #The output values of inverse trigonometric functions are in radians and between pi and -pi.
-    #This can be confusing if you are familiar working with 0 to 2*pi.
-    #In this function we add 2*pi to negative output values, that is, the range would be 0 to 2*pi for all real domain
+    # The output values of inverse trigonometric functions are in radians and between pi and -pi.
+    # This can be confusing if you are familiar working with 0 to 2*pi.
+    # In this function we add 2*pi to negative output values, that is, the range would be 0 to 2*pi for all real domain
     @classmethod             
     def InvTrigCorrection(cls, angle):
         if angle < 0:

@@ -4,10 +4,10 @@ Sample Python/Pygame Programs
 http://programarcadegames.com/
 """
 
-# Import a library
+# Import a library.
 import pygame
 
-# Initialize the game engine
+# Initialize the game engine.
 pygame.init()
 
 # Define some colors
@@ -18,18 +18,18 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 PI = 3.141592653
 
-# Set the height and width of the screen
+# Set the height and width of the screen.
 size = (400, 500)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Professor Craven's Cool Game")
 
-#Set the screen to white
+# Set the screen to white.
 screen.fill(WHITE)
 
 # Loop until the user clicks the close button.
 done = False
 clock = pygame.time.Clock()
-# Loop as long as done == False
+# Loop as long as done == False.
 while not done:
     for event in pygame.event.get(): # User did something
         if event.type == pygame.QUIT: # If user clicked close
@@ -38,12 +38,12 @@ while not done:
 # inside the main while not done loop.
 # Clear the screen
     screen.fill(WHITE)
-#and set the screen background
+# and set the screen background.
 # Draw on the screen a line from (0,0) to (100,100)
 # 5 pixels wide.
     pygame.draw.line(screen, GREEN, [0, 0], [100, 100], 5)
 
-#www.it-ebooks.infoChapter 6 ■ Introduction to Graphics
+# www.it-ebooks.infoChapter 6 ■ Introduction to Graphics
 # Draw on the screen several lines from (0,10) to (100,110)
 # 5 pixels wide using a loop
     for y_offset in range(0, 100, 10):

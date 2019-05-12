@@ -1,5 +1,5 @@
-'''@TODO: Meriam's Dynamics Book Problem 271 in Chapter 3.
-Solve for the correct values.'''
+''' @TODO: Meriam's Dynamics Book Problem 271 in Chapter 3.
+Solve for the correct values. '''
 
 
 import math
@@ -15,7 +15,7 @@ def Compute(mA, mB, vAx, vAy, vBx, vBy, CenterAngle, coeff):
 
     print(CenterAngle*(180/PI))
     print(vAx, vAy)
-    #Convert the vector velocity from (x, y) to (x', y') 
+    # Convert the vector velocity from (x, y) to (x', y') 
     vAx, vAy = RotateAxis(vAx, vAy, CenterAngle)
     print(vAx, vAy)
 
@@ -32,7 +32,7 @@ def Compute(mA, mB, vAx, vAy, vBx, vBy, CenterAngle, coeff):
 
     # print(vAx, vAy2, vBx, vBy2)
 
-    #Convert the vector velocity from (x, y) to (x', y') 
+    # Convert the vector velocity from (x, y) to (x', y') 
     vAx, vAy2 = RotateAxis(vAx, vAy2, -CenterAngle)
     vBx, vBy2 = RotateAxis(vBx, vBy2, -CenterAngle)
 

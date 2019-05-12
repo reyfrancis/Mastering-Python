@@ -3,15 +3,15 @@ def print_asterisk():
 def print_carriage_newline():
     print('\n \r', end='') 
 
-#1.
-#* * * * * * * * * *
+# 1.
+# * * * * * * * * * *
 for i in range(10):
     print_asterisk()
 print_carriage_newline()
 
 print_carriage_newline()    
 
-#2. 
+# 2. 
 # * * * * * * * * * *
 # * * * * *
 # * * * * * * * * * * * * * * * * * * * *
@@ -27,7 +27,7 @@ print_carriage_newline()
 
 print_carriage_newline()
 
-#3. 
+# 3. 
 # * * * * * * * * * *
 # * * * * * * * * * *
 # * * * * * * * * * *
@@ -44,7 +44,7 @@ for i in range(10):
     print_carriage_newline()
 print_carriage_newline()
 
-#4.
+# 4.
 # * * * * * * * * * *
 # * * * * * * * * * *
 # * * * * * * * * * *
@@ -61,7 +61,7 @@ for i in range(10):
     print_carriage_newline()
 print_carriage_newline()
 
-#5.
+# 5.
 # * * * * * * * * * * * * * * * * * * * *
 # * * * * * * * * * * * * * * * * * * * *
 # * * * * * * * * * * * * * * * * * * * *
@@ -73,7 +73,7 @@ for i in range(5):
     print_carriage_newline()
 print_carriage_newline()
 
-#6.
+# 6.
 # 0 1 2 3 4 5 6 7 8 9
 # 0 1 2 3 4 5 6 7 8 9
 # 0 1 2 3 4 5 6 7 8 9
@@ -93,7 +93,7 @@ for i in range(10):
     print_carriage_newline()
 print_carriage_newline()
 
-#7. 
+# 7. 
 # 0 0 0 0 0 0 0 0 0 0 
 # 1 1 1 1 1 1 1 1 1 1 
 # 2 2 2 2 2 2 2 2 2 2 
@@ -112,7 +112,7 @@ for i in range(10):
     print_carriage_newline()
 print_carriage_newline()     
 
-#8.
+# 8.
 # 0 
 # 0 1 
 # 0 1 2 
@@ -133,14 +133,14 @@ for i in range(10):
     print_carriage_newline()
 print_carriage_newline()  
 
-#Optimal Solution
+# Optimal Solution
 # for row in range(10):
 #     for column in range(row+1):
 #         print (column,end=" ")
 #     print()
 # print_carriage_newline()  
 
-#9.
+# 9.
 # 0 1 2 3 4 5 6 7 8 9 
 #   0 1 2 3 4 5 6 7 8 
 #     0 1 2 3 4 5 6 7 
@@ -163,7 +163,7 @@ for i in range(10):
     print_carriage_newline()
 print_carriage_newline()
 
-#Optimal Solution  
+# Optimal Solution  
 # for row in range(10):
  
 #     for j in range(row):
@@ -174,7 +174,7 @@ print_carriage_newline()
  
 #     print()
 
-#10.
+# 10.
 x = 1
 for i in range(9):
     for j in range(9):
@@ -184,16 +184,16 @@ for i in range(9):
     print_carriage_newline()
 print_carriage_newline() 
 
-#11.
-  #                 1 
-  #               1 2 1 
-  #             1 2 3 2 1 
-  #           1 2 3 4 3 2 1 
-  #         1 2 3 4 5 4 3 2 1 
-  #       1 2 3 4 5 6 5 4 3 2 1 
-  #     1 2 3 4 5 6 7 6 5 4 3 2 1 
-  #   1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
-  # 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 
+# 11.
+#                   1 
+#                 1 2 1 
+#               1 2 3 2 1 
+#             1 2 3 4 3 2 1 
+#           1 2 3 4 5 4 3 2 1 
+#         1 2 3 4 5 6 5 4 3 2 1 
+#       1 2 3 4 5 6 7 6 5 4 3 2 1 
+#     1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
+#   1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 
 x = 1
 for i in range(10):
     for k in range(10-i):
@@ -213,24 +213,24 @@ for i in range(10):
 print_carriage_newline()  
 
 
-#12.                   
-  #                 1 
-  #               1 2 1 
-  #             1 2 3 2 1 
-  #           1 2 3 4 3 2 1 
-  #         1 2 3 4 5 4 3 2 1 
-  #       1 2 3 4 5 6 5 4 3 2 1 
-  #     1 2 3 4 5 6 7 6 5 4 3 2 1 
-  #   1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
-  # 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 
-  #   1 2 3 4 5 6 7 8 
-  #     1 2 3 4 5 6 7 
-  #       1 2 3 4 5 6 
-  #         1 2 3 4 5 
-  #           1 2 3 4 
-  #             1 2 3 
-  #               1 2 
-  #                 1 
+# 12.                   
+#                   1 
+#                 1 2 1 
+#               1 2 3 2 1 
+#             1 2 3 4 3 2 1 
+#           1 2 3 4 5 4 3 2 1 
+#         1 2 3 4 5 6 5 4 3 2 1 
+#       1 2 3 4 5 6 7 6 5 4 3 2 1 
+#     1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
+#   1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 
+#     1 2 3 4 5 6 7 8 
+#       1 2 3 4 5 6 7 
+#         1 2 3 4 5 6 
+#           1 2 3 4 5 
+#             1 2 3 4 
+#               1 2 3 
+#                 1 2 
+#                   1 
 for i in range(10):
     # Print leading spaces
     for j in range(10-i):
@@ -255,24 +255,24 @@ for i in range(10):
     print()
 
 
-#13.
-  #                 1 
-  #               1 2 1 
-  #             1 2 3 2 1 
-  #           1 2 3 4 3 2 1 
-  #         1 2 3 4 5 4 3 2 1 
-  #       1 2 3 4 5 6 5 4 3 2 1 
-  #     1 2 3 4 5 6 7 6 5 4 3 2 1 
-  #   1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
-  # 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 
-  #   1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
-  #     1 2 3 4 5 6 7 6 5 4 3 2 1 
-  #       1 2 3 4 5 6 5 4 3 2 1 
-  #         1 2 3 4 5 4 3 2 1 
-  #           1 2 3 4 3 2 1 
-  #             1 2 3 2 1 
-  #               1 2 1 
-  #                 1                  
+# 13.
+#                   1 
+#                 1 2 1 
+#               1 2 3 2 1 
+#             1 2 3 4 3 2 1 
+#           1 2 3 4 5 4 3 2 1 
+#         1 2 3 4 5 6 5 4 3 2 1 
+#       1 2 3 4 5 6 7 6 5 4 3 2 1 
+#     1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
+#   1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 
+#     1 2 3 4 5 6 7 8 7 6 5 4 3 2 1 
+#       1 2 3 4 5 6 7 6 5 4 3 2 1 
+#         1 2 3 4 5 6 5 4 3 2 1 
+#           1 2 3 4 5 4 3 2 1 
+#             1 2 3 4 3 2 1 
+#               1 2 3 2 1 
+#                 1 2 1 
+#                   1                  
 for i in range(10):
     # Print leading spaces
     for j in range(10-i):

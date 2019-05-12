@@ -1,4 +1,4 @@
-#This code shows that the implementation is coherent with Catersian Coordinate axis
+''' This code shows that the implementation is coherent with Catersian Coordinate axis '''
 
 import pygame
 import random
@@ -23,7 +23,6 @@ class Circle:
         self.velocity_y = 5
 
     def move(self):
-            # bool isCircleChanging = False
             self.x, self.y = my_calculation.Pygame_to_Cartesian(self.x, self.y)
             if self.x > (my_game.width-self.radius) or self.x < self.radius:
                 self.velocity_x*=-1
@@ -31,17 +30,17 @@ class Circle:
             if self.y > (my_game.height-self.radius) or self.y < self.radius:
                 self.velocity_y*=-1
 
-            #Convert coordinates in Cartesian Plane
+            # Convert coordinates in Cartesian Plane
             print(self.x, self.y)
             
-            #Print Coordinates and velocity
+            # Print Coordinates and velocity
             print('X: {}, Y: {}, Vx: {}, Vy: {}'.format(self.x, self.y, self.velocity_x, self.velocity_y))
 
-            #Do calculations in Cartesian Coordinate Plane
+            # Do calculations in Cartesian Coordinate Plane
             self.x+=self.velocity_x
             self.y+=self.velocity_y
 
-            #Convert coordinates to Pygame Plane
+            # Convert coordinates to Pygame Plane
             self.x, self.y = my_calculation.Cartesian_to_Pygame(self.x, self.y)
 
 class Game(Circle):
