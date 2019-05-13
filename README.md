@@ -23,6 +23,9 @@ Contents
  * [Intermediate builtin codes](https://github.com/reyfrancis/Mastering-Python/tree/master/Intermediate_builtin)
  * [Object-Oriented Programming](https://github.com/reyfrancis/Mastering-Python/tree/master/OOP_lecture_by_Corey_Schafer)
  * [Book notes: Program Arcade Games](https://github.com/reyfrancis/Mastering-Python/tree/master/ProgramArcadeGames_by_Paul_Vincent_Craven)
+  *[OpenCV Documentation: (https://docs.opencv.org)](https://github.com/reyfrancis/Mastering-Python/tree/master/OpenCV)
+    * [Image Files](https://github.com/reyfrancis/Mastering-Python/tree/master/OpenCV/Image%20Files)
+
 
 License
 -------
