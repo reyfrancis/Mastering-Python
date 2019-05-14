@@ -63,6 +63,12 @@ print(black_profile)   # And its values are separated by spaces and not commas
 black_list = list(black_profile)   # We will turn this into a list and them so that it will be separated by comma
 print(black_list)   # To verify it is already a list
 
+#OR
+
+# b,g,r = cv2.split(img)
+# img = cv2.merge((b,g,r))
+# print(img)
+
 # Save inside an array all the pixels for which the image has BLACK profile
 indices = np.where((img_quora == black_list))
 
@@ -87,7 +93,6 @@ while i < len(indices[0]) :
 cv2.imwrite('/home/rey/Desktop/Mastering-Python/OpenCV/Image Files/Output.jpg', img_quora)
 img_quora_red = cv2.imread('/home/rey/Desktop/Mastering-Python/OpenCV/Image Files/Output.jpg', cv2.IMREAD_COLOR)
 cv2.imshow('Red Quora', img_quora_red)
-
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
