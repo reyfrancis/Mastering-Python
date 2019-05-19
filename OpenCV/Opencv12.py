@@ -4,10 +4,17 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+import sys
+
+# Check if the OS is Windows or Linux
+if sys.platform == 'win32':
+    PATH_sys = 'C:/Users/Joelatech24'
+elif sys.platform == 'linux':
+    PATH_sys = '/home/rey'
 
 BLUE = [255,0,0]
 
-img1 = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/messi.jpg',  cv2.IMREAD_COLOR)
+img1 = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/messi.jpg',  cv2.IMREAD_COLOR)
 
 replicate = cv2.copyMakeBorder(img1,10,10,10,10,cv2.BORDER_REPLICATE)
 reflect = cv2.copyMakeBorder(img1,10,10,10,10,cv2.BORDER_REFLECT)

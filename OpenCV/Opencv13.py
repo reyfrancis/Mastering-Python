@@ -4,6 +4,13 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+import sys
+
+# Check if the OS is Windows or Linux
+if sys.platform == 'win32':
+    PATH_sys = 'C:/Users/Joelatech24'
+elif sys.platform == 'linux':
+    PATH_sys = '/home/rey'
 
 '''
 You can add two images by OpenCV function, cv2.add() or simply by numpy operation, res = img1 + img2. 
@@ -20,8 +27,8 @@ cv2.add(x, y)   # 250+10 = 260 => 255
 print(x + y)   # 250+10 = 260 % 256 = 4
 
 
-img1 = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/m1.jpg', cv2.IMREAD_COLOR)
-img2 = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/m2.jpg',  cv2.IMREAD_COLOR)
+img1 = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/m1.jpg', cv2.IMREAD_COLOR)
+img2 = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/m2.jpg',  cv2.IMREAD_COLOR)
 
 sum_image = cv2.addWeighted(img2, 0.7, img1, 0.3, 0)   # Weighted image is a more formal term to saying transparency of an image
 # In order to add two images, they must have the same shape. 

@@ -3,11 +3,18 @@
 # Declare Libraries
 import cv2 
 import numpy as np
+import sys
 
-# @TODO: Correct the Image PATH to Ubuntu
-img = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/Flower.jpg', cv2.IMREAD_COLOR)   # Load colored image
+# Check if the OS is Windows or Linux
+if sys.platform == 'win32':
+    PATH_sys = 'C:/Users/Joelatech24'
+elif sys.platform == 'linux':
+    PATH_sys = '/home/rey'
 
-img_gray = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/Flower.jpg', cv2.IMREAD_GRAYSCALE)   # Load grayed image
+
+img = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/Flower.jpg', cv2.IMREAD_COLOR)   # Load colored image
+
+img_gray = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/Flower.jpg', cv2.IMREAD_GRAYSCALE)   # Load grayed image
 
 # To access the shape of the image
 print(img.shape)   # Note the it prints a tuple of (rows, column, channels)

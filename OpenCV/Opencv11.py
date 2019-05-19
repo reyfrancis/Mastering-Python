@@ -3,9 +3,15 @@
 # Declare Libraries
 import cv2 
 import numpy as np
+import sys
 
-# @TODO: Correct the Image PATH to Ubuntu
-img = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/messi.jpg', cv2.IMREAD_COLOR)   # Load colored image
+# Check if the OS is Windows or Linux
+if sys.platform == 'win32':
+    PATH_sys = 'C:/Users/Joelatech24'
+elif sys.platform == 'linux':
+    PATH_sys = '/home/rey'
+
+img = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/messi.jpg', cv2.IMREAD_COLOR)   # Load colored image
 
 '''
 As for the first question - 280:340, 330:390 means: get a rectangle that begins at 280th row and 330th column and 

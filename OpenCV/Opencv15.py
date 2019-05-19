@@ -16,9 +16,16 @@ thresholding and it is decided by the fourth parameter of the function. Differen
 import cv2 
 import numpy as np
 from matplotlib import pyplot as plt
+import sys
+
+# Check if the OS is Windows or Linux
+if sys.platform == 'win32':
+    PATH_sys = 'C:/Users/Joelatech24'
+elif sys.platform == 'linux':
+    PATH_sys = '/home/rey'
 
 # cv.threshold(img, threshold_value, output_value, threshold_style)
-img = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/gradient.png', 0)
+img = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/gradient.png', 0)
 
 ret,thresh1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
 ret,thresh2 = cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
@@ -110,7 +117,7 @@ blockSize – Size of a pixel neighborhood that is used to calculate a threshold
 C – Constant subtracted from the mean or weighted mean (see the details below). Normally, it is positive but may be zero or negative as well.
 '''
 
-img_adapt = cv2.imread('C:/Users/Joelatech24/Desktop/Mastering-Python/OpenCV/Image Files/dave.jpg', 0)
+img_adapt = cv2.imread(PATH_sys + '/Desktop/Mastering-Python/OpenCV/Image Files/dave.jpg', 0)
 img_adapt = cv2.medianBlur(img_adapt, 5)
 
 ret,th1 = cv2.threshold(img_adapt, 127, 255, cv2.THRESH_BINARY)
@@ -127,4 +134,3 @@ for i in range(4):
     plt.title(titles_adapt[i])
     plt.xticks([]),plt.yticks([])
 plt.show()
-
