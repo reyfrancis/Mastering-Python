@@ -76,4 +76,3 @@ rect_green2 = Rectangle(GREEN, 10)
 my_game = Game(BLACK, 'Bouncing Rectangles', 400, 500, 60)
 my_game.makeScreen()
 my_game.main([rect_red, rect_blue, rect_white, rect_green1, rect_green2])
-
