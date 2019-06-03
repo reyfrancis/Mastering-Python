@@ -8,7 +8,7 @@ import sys
 
 # Check if the OS is Windows or Linux
 if sys.platform == 'win32':
-    PATH_sys = 'C:/Users/Joelatech24'
+    PATH_sys = 'C:/Users/reyfrancis'
 elif sys.platform == 'linux':
     PATH_sys = '/home/rey'
 

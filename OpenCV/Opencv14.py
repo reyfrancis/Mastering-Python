@@ -8,7 +8,7 @@ import sys
 
 # Check if the OS is Windows or Linux
 if sys.platform == 'win32':
-    PATH_sys = 'C:/Users/Joelatech24'
+    PATH_sys = 'C:/Users/reyfrancis'
 elif sys.platform == 'linux':
     PATH_sys = '/home/rey'
 
@@ -22,7 +22,7 @@ rows,cols,channels = img2.shape   # We define the img2 pixels
 roi = img1[0:rows, 0:cols ]   # We take the img1 rectangle from the top left in the shape of image 2.
 # 'roi' is an image taken from the image1 top left in the size of image 2. This will be use later for cv2.bitwise_and()
 
-
+		
 cv2.imshow('roi', roi)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
@@ -55,13 +55,13 @@ ouput_value = 255
 Then we set a threshold, that is whiter than black. Say we use 200.
 
 And so going back. 
-If pixel_value is darker that 200:
+If pixel_value is lighter that 200:
     pixel_value is equal to white
 
 OR if the background image is BLACK, we just use BLACK as the threshold. Which means
 
 
-If pixel_value is darker that BLACK:
+If pixel_value is lighter that BLACK:
     pixel_value is equal to white
 '''
 
