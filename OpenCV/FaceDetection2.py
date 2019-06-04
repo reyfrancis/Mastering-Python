@@ -111,3 +111,58 @@ for (i, imagePath) in enumerate(imagePaths):
 	image = cv2.imread(imagePath)
 	image = imutils.resize(image, width=600)
 	(h, w) = image.shape[:2]
+
+	'''
+	$ python
+>>> from imutils import paths
+>>> import os
+>>> imagePaths = list(paths.list_images("dataset"))
+>>> imagePath = imagePaths[0]
+>>> imagePath
+'dataset/adrian/00004.jpg'
+>>> imagePath.split(os.path.sep)
+['dataset', 'adrian', '00004.jpg']
+>>> imagePath.split(os.path.sep)[-2]
+'adrian'
+'''
+
+
+
+	# construct a blob from the image
+	imageBlob = cv2.dnn.blobFromImage(
+		cv2.resize(image, (300, 300)), 1.0, (300, 300),
+		(104.0, 177.0, 123.0), swapRB=False, crop=False)
+ 
+	# apply OpenCV's deep learning-based face detector to localize
+	# faces in the input image
+	detector.setInput(imageBlob)
+	detections = detector.forward()
+
+	'''
+	Here we:
+
+	Load the image into memory and construct a blob (Lines 42-49). Learn about  cv2.dnn.blobFromImage  here.
+	Localize faces in the image via our detector  (Lines 53 and 54).
+	Given our new detections , let’s recognize faces in the image. But first we need to filter weak detections  and extract the 
+	face  ROI:
+	# loop over the detections
+	for i in range(0, detections.shape[2]):
+	# extract the confidence (i.e., probability) associated with the
+	# prediction
+	confidence = detections[0, 0, i, 2]
+ '''
+
+	# filter out weak detections
+	if confidence > args["confidence"]:
+		# compute the (x, y)-coordinates of the bounding box for the
+		# face
+		box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
+		(startX, startY, endX, endY) = box.astype("int")
+ 
+		# extract the face ROI
+		face = image[startY:endY, startX:endX]
+		(fH, fW) = face.shape[:2]
+ 
+		# ensure the face width and height are sufficiently large
+		if fW < 20 or fH < 20:
+			continue

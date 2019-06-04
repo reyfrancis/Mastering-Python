@@ -11,7 +11,6 @@ A personal Python notebook. Written compilation of builtin commands in Python bo
 Project state
 -------------
 **TODOs:**
-* Fix the bug for the Collision circles
 * Finish the book Program Arcade Games
 * Start learning Tensorflow
 * Learn ML, DL, AI math
