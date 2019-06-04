@@ -1,0 +1,152 @@
+
+<!-- saved from url=(0043)http://dis.um.es/~ginesgm/fip/problems.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>Face Integral Projections - ginesgm</title>
+</head>
+
+<body bgcolor="#B67D70" text="#000000" link="#550000" vlink="#6C0000" alink="#994D00" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" cols="2" nosave="">
+  <tbody><tr>
+    <td valign="top" rowspan="100" width="1" bgcolor="#000000" nosave=""><p align="center"><img src="./Face Integral Projections - ginesgm_files/barraip.gif" width="92" height="512"></p>
+    <p align="left"><a href="http://dis.um.es/~ginesgm/fip/index.html"><font color="#FFFFFF" size="2" face="Arial"><strong>MAIN
+    INDEX</strong></font></a></p>
+    <p align="left"><a href="http://dis.um.es/~ginesgm/fip/docs.html"><font color="#FFFFFF" size="2" face="Arial"><strong>DOCUMENTS</strong></font></a></p>
+    <p align="left"><a href="http://dis.um.es/~ginesgm/fip/videos.html"><font color="#FFFFFF" size="2" face="Arial"><strong>VIDEOS</strong></font></a></p>
+    <p align="left"><a href="http://dis.um.es/~ginesgm/fip/percint.html"><font color="#FFFFFF" size="2" face="Arial"><strong>SAMPLE
+    APPLICATIONS</strong></font></a></p>
+    <p align="left"><a href="http://dis.um.es/~ginesgm/fip/intpro.html"><font color="#FFFFFF" size="2" face="Arial"><strong>INTEGRAL
+    PROJECTIONS</strong></font></a></p>
+    <p align="left"><a href="http://dis.um.es/~ginesgm/fip/problems.html"><font color="#FFFFFF" size="2" face="Arial"><strong>PROCESSING
+    PROBLEMS</strong></font></a></p></td>
+    <td valign="top" width="10"></td>
+    <td valign="top" nosave=""><p align="center"><font color="#550000" size="6" face="Arial Black">FACE PROCESSING PROBLEMS</font></p>
+    <p align="center"><font color="#550000" size="4" face="Arial"><a href="http://dis.um.es/~ginesgm/fip/problems.html#detection">Detection</a>
+    | <a href="http://dis.um.es/~ginesgm/fip/problems.html#location">Location</a> | <a href="http://dis.um.es/~ginesgm/fip/problems.html#tracking">Tracking</a> | <a href="http://dis.um.es/~ginesgm/fip/problems.html#recognition">Recognition</a> | <a href="http://dis.um.es/~ginesgm/fip/problems.html#expression">Expression</a> | <a href="http://dis.um.es/~ginesgm/fip/problems.html#pose">Pose</a></font></p>
+    <p align="center"><font color="#550000" size="4" face="Arial"><br>
+    </font><a name="detection"><font color="#550000" size="6" face="Arial Black">Face
+    Detection</font></a></p>
+    <p align="center"><font face="Arial"><img src="./Face Integral Projections - ginesgm_files/global.det.gif" width="680" height="380"></font></p>
+    <p align="center"><font face="Arial">The proposed method performs an exhaustive
+    multi-scale search, where the <em>face</em> class is described by the vertical projection
+    of the whole face (<em>MVface</em>) and the horizontal projection of the eyes' region (<em>MHeyes</em>).</font></p>
+    <p align="center"><font face="Arial"><strong>Step 1.</strong> Vertical projections of
+    overlapped strips are obtained. The pattern of <em>MVface</em> is searched for, and the
+    best candidates are selected. This process is repeated at different scales.</font></p>
+    <p align="center"><font face="Arial"><strong>Step 2.</strong> For each candidate, the
+    horizontal projection of the expected eye region is computed. This is done with a certain
+    tolerance in position and scale. The pattern of <em>MHeyes</em> is searched for. If it is
+    not found, the candidate is rejected.</font></p>
+    <p align="center"><font face="Arial"><strong>Step 3.</strong> The resulting candidates are
+    grouped and pruned. In case of overlapping, only the best candidate is selected.</font></p>
+    <p align="center"><font color="#800000" size="5" face="Arial"><strong>SAMPLE RESULTS<br>
+    </strong></font><font color="#800000" size="4" face="Arial"><a href="http://dis.um.es/~ginesgm/fip/images/detect/cmu/index.html">CMU/MIT Face Database</a><br>
+    <a href="http://dis.um.es/~ginesgm/fip/images/detect/umu/index.html">UMU Face Database</a></font></p>
+    <p align="center"><font color="#800000" size="4" face="Arial"><br>
+    </font><a name="location"><font color="#550000" size="6" face="Arial Black">Facial Feature
+    Location</font></a></p>
+    <p align="center"><font face="Arial"><img src="./Face Integral Projections - ginesgm_files/global.loc.gif" width="680" height="380"></font></p>
+    <p align="center"><font face="Arial">The facial feature locator takes as input the results
+    of the face detector. It refines the location of the face by using the models of the
+    vertical projection of the face (<em>MVface</em>) and the horizontal projection of the
+    eyes' region (<em>MHeyes</em>). The alignment algorithm is a key problem in the three
+    steps of the process.</font></p>
+    <p align="center"><font face="Arial"><strong>Step 1.</strong> The vertical projections of
+    the regions expected for both eyes are computed. These projections are aligned. The
+    resulting distance is used to compute the face orientation angle. This is a robust way of
+    using face symmetry.</font></p>
+    <p align="center"><font face="Arial"><strong>Step 2.</strong> After extracting the
+    rectified face (with an affine transform), the vertical projection of the face is
+    computed, including a tolerance margin. This projection is aligned with respect to <em>MVface</em>.
+    Consequently, the face is relocated in Y.</font></p>
+    <p align="center"><font face="Arial"><strong>Step 3.</strong> The horizontal projection of
+    the expected eyes' region is computer, including a tolerance margin. This projection is
+    aligned with respect to <em>MHeyes</em>. Consequently, the face is relocated in X.</font></p>
+    <p align="center"><font color="#800000" size="5" face="Arial"><strong>SAMPLE RESULTS<br>
+    </strong></font><a href="http://dis.um.es/~ginesgm/fip/images/locat/index.html"><font color="#800000" size="4" face="Arial">CMU/MIT and UMU Face Databases</font></a></p>
+    <p align="center"><font face="Arial"><br>
+    </font><a name="tracking"><font color="#550000" size="6" face="Arial Black">Face Tracking</font></a></p>
+    <p align="center"><font face="Arial"><img src="./Face Integral Projections - ginesgm_files/global.track.gif" width="680" height="304"></font></p>
+    <p align="center"><font face="Arial">Face tracking is an iterative process which consists
+    of prediction and relocation. To make the prediction, a trivial method (use the locations
+    in the previous frame) or a color method (CamShift algorithm) can be used.</font></p>
+    <p align="center"><font face="Arial">The relocation process is very similar to the facial
+    feature location algorithm. The main differences are:</font></p>
+    <p align="center"><font face="Arial">- The projection models used in alignment (<em>MVface</em>
+    and <em>MHeyes</em>) are learned from the same sequence; more precisely, from the first
+    frame in the sequence.</font></p>
+    <p align="center"><font face="Arial">- The step of "orientation estimation" is
+    now the last step in the process.</font></p>
+    <p align="center"><font face="Arial">- The distances obtained from the alignment (from <em>PVface</em>
+    to <em>MVface</em>, and from <em>PHeyes</em> to <em>MHeyes</em>) are used to detect when
+    the tracked face is lost.</font></p>
+    <p align="center"><font size="4" face="Arial"><a href="http://dis.um.es/~ginesgm/fip/videos.html">Sample Videos</a><br>
+    <a href="http://dis.um.es/~ginesgm/files/inv/tesis/video/tracking1.avi">Low Resolution Video</a></font></p>
+    <p align="center"><font size="4" face="Arial"><br>
+    </font><a name="recognition"><font color="#550000" size="6" face="Arial Black">Face
+    Recognition</font></a></p>
+    <p align="center"><font face="Arial"><img src="./Face Integral Projections - ginesgm_files/global.rec.gif" width="680" height="435"></font></p>
+    <p align="center"><font face="Arial">Integral projections can be applied to perform
+    biometric face recognition. Projections are extracted from all the samples in the gallery
+    and the probe set. The scores <em>s<sub>ij</sub></em> between each gallery sample <em>g<sub>i</sub></em>
+    and probe <em>p<sub>j</sub></em> is defined as the distance between two projections after
+    alignment. <em>PVface</em> and <em>PHeyes</em> can be combined to obtain better
+    recognition results.</font></p>
+    <p align="center"><font face="Arial">This method outperforms template matching using
+    correlation, the eigenfaces approach, and face recognition using Hidden Markov Models.</font></p>
+    <p align="center"><font face="Arial"><br>
+    </font><a name="expression"><font color="#550000" size="6" face="Arial Black">Facial
+    Expression Analysis</font></a></p>
+    <p align="center"><font face="Arial"><img src="./Face Integral Projections - ginesgm_files/gen.avatar.gif" width="680" height="352"></font></p>
+    <p align="center"><font face="Arial">We propose a simple method to analyze facial
+    expressions, based in a discrete number of <strong>action units</strong> (AU). Four states
+    are defined for the eyes (normal, closed, eyebrows raised, and eyebrows lowered) and for
+    the mouth (closed, half opened, opened, and teeth showing).</font></p>
+    <p align="center"><font face="Arial">Face detection, location and tracking are used to
+    find the region of eyes and mouth in each frame of the video sequence. Vertical
+    projections are extracted from these regions. There exists a classifier of eye
+    projections, and another for mouth projections.</font></p>
+    <p align="center"><a href="http://dis.um.es/~ginesgm/files/inv/tesis/video/expression.avi"><font size="4" face="Arial">Sample Video and Result</font></a></p>
+    <p align="center"><font face="Arial"><br>
+    </font><a name="pose"><font color="#550000" size="6" face="Arial Black">Facial Pose
+    Estimation</font></a></p>
+    <p align="center"><font face="Arial"><img src="./Face Integral Projections - ginesgm_files/global.pose.gif" width="680" height="315"></font></p>
+    <p align="center"><font face="Arial">This method is designed to produce control signals
+    for the navigation in a virtual environment. Thus, some heuristics are introduced and the
+    results may not be very precise. Accuracy is sacrificed at the expense of manageability.</font></p>
+    <p align="center"><font face="Arial">3D location of the face <em>(x, y, z)</em> and roll
+    angle are estimated using the tracked locations of eyes and mouth. Yaw is heuristically
+    computed using the horizontal projection of the eyes region. Pitch is estimated using the
+    vertical projection of the face.</font></p>
+    <p align="center"><font size="4" face="Arial"><a href="http://dis.um.es/~ginesgm/files/inv/tesis/video/pose.ggm.fixed.avi">Sample Result of Pose<br>
+    </a><a href="http://dis.um.es/~ginesgm/fip/percint.html">Perceptual Interface Using Pose Estimation<br>
+    </a><a href="http://dis.um.es/~ginesgm/files/inv/ginesgm-conf60a56.mpg">Sample Video of the
+    Perceptual Interface</a></font></p>
+    <p align="center"><font size="4" face="Arial"><br>
+    </font><font size="2" face="Arial,Helvetica"><a href="http://www.um.es/informatica">Facultad
+    de Informática</a>. Despacho 2.34</font><br>
+    <font size="2" face="Arial,Helvetica"><a href="http://www.um.es/siu/planos-mapas/plano2.htm">Campus de Espinardo</a>. <a href="http://www.um.es/">Universidad de Murcia</a></font><br>
+    <font size="2" face="Arial,Helvetica">30100 Espinardo, <a href="http://www.carm.es/">Murcia</a>
+    (SPAIN)</font> <br>
+    <font size="2" face="Arial,Helvetica">Teléfono: +34 968 39 85 30</font><br>
+    <font size="2" face="Arial,Helvetica">Fax: +34 968 36 41 51</font> <br>
+    <font size="2" face="Arial,Helvetica">E-mail: <a href="mailto:ginesgm@um.es">ginesgm@um.es</a></font>
+    </p>
+    <p align="center"><br>
+    </p></td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6778789-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body></html>
