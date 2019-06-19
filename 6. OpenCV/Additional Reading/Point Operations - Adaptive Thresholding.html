@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!-- saved from url=(0052)http://homepages.inf.ed.ac.uk/rbf/HIPR2/adpthrsh.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Point Operations - Adaptive Thresholding</title>
+</head>
+<body bgcolor="#ffffff">
+<img src="./Point Operations - Adaptive Thresholding_files/logo.gif" alt="" align="right"><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/hipr_top.htm"><img alt="home" src="./Point Operations - Adaptive Thresholding_files/home.gif"></a>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm"><img alt="left" src="./Point Operations - Adaptive Thresholding_files/left.gif"></a>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/stretch.htm"><img alt="right" src="./Point Operations - Adaptive Thresholding_files/right.gif"></a>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/pntops.htm"><img alt="up" src="./Point Operations - Adaptive Thresholding_files/up.gif"></a>
+<br clear="right"><br><center><img alt="---" src="./Point Operations - Adaptive Thresholding_files/line2.gif" width="75%" height="4"></center><br>
+<a name="1"><img alt="" src="./Point Operations - Adaptive Thresholding_files/mote.gif"></a><h1>Adaptive Thresholding</h1>
+ 
+
+<p>
+
+	</p><center>
+	<img alt="" align="middle" src="./Point Operations - Adaptive Thresholding_files/athrshb.gif"><p> 
+	<strong>Common Names:</strong> Adaptive thresholding, Dynamic thresholding
+	</p></center>
+
+<p>
+</p><h2>Brief Description</h2>
+
+<p>Thresholding is used to segment an image by setting all pixels whose
+intensity values are above a threshold to a foreground value and all
+the remaining pixels to a background value.
+
+</p><p>Whereas the conventional <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm">thresholding</a> operator uses a
+global threshold for all pixels, adaptive thresholding changes the
+threshold dynamically over the image. This more sophisticated version
+of thresholding can accommodate changing lighting conditions in the
+image, <em>e.g.</em> those occurring as a result of a strong illumination
+gradient or shadows.
+
+</p><p><a name="how"><img alt="" src="./Point Operations - Adaptive Thresholding_files/mote.gif"></a></p><h2>How It Works</h2>
+
+<p>Adaptive thresholding typically takes a <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/gryimage.htm">grayscale</a> or <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/colimage.htm">color</a> image as
+input and, in the simplest implementation, outputs a
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/binimage.htm">binary image</a> representing the segmentation. For each
+pixel in the image, a threshold has to be calculated. If the pixel
+value is below the threshold it is set to the background value,
+otherwise it assumes the foreground value.
+
+</p><p>There are two main approaches to finding the threshold: (i) the
+<a name="2"><img alt="" src="./Point Operations - Adaptive Thresholding_files/mote.gif"></a><em>Chow and Kaneko</em> approach and
+(ii) <a name="3"><img alt="" src="./Point Operations - Adaptive Thresholding_files/mote.gif"></a><em>local</em> thresholding. The
+assumption behind both methods is that smaller image regions are more
+likely to have approximately uniform illumination, thus being more
+suitable for thresholding. Chow and Kaneko divide an image into an
+array of overlapping subimages and then find the optimum threshold for
+each subimage by investigating its histogram. The threshold for each
+single pixel is found by interpolating the results of the
+subimages. The drawback of this method is that it is computational
+expensive and, therefore, is not appropriate for real-time applications.
+
+</p><p>An alternative approach to finding the local threshold is to
+statistically examine the intensity values of the local neighborhood
+of each pixel. The statistic which is most appropriate depends
+largely on the input image. Simple and fast functions include the
+<em>mean</em> of the <em>local</em> intensity distribution, 
+
+</p><p></p><blockquote>
+<img alt="Eqn:eqnadp1" src="./Point Operations - Adaptive Thresholding_files/eqnadp1.gif" align="bottom">
+</blockquote> 
+
+<p>the <em>median</em> value, 
+
+</p><p></p><blockquote>
+<img alt="Eqn:eqnadp2" src="./Point Operations - Adaptive Thresholding_files/eqnadp2.gif" align="bottom">
+</blockquote> 
+
+<p>or the mean of the minimum and maximum values,
+
+</p><p></p><blockquote>
+<img alt="Eqn:eqnadp3" src="./Point Operations - Adaptive Thresholding_files/eqnadp3.gif" align="bottom">
+</blockquote> 
+
+<p>The size of the neighborhood has to be large enough to cover
+sufficient foreground and background pixels, otherwise a poor
+threshold is chosen. On the other hand, choosing regions which are too
+large can violate the assumption of approximately uniform
+illumination. This method is less computationally intensive than the
+Chow and Kaneko approach and produces good results for some
+applications.
+
+</p><p><a name="guidelines"><img alt="" src="./Point Operations - Adaptive Thresholding_files/mote.gif"></a></p><h2>Guidelines for Use</h2>
+
+<p>Like <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm">global thresholding</a>, adaptive thresholding is used
+to separate desirable foreground image objects from the background
+based on the difference in pixel intensities of each region. Global
+thresholding uses a fixed threshold for all pixels in the image and
+therefore works only if the <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/histgram.htm">intensity histogram</a> of the
+input image contains neatly separated peaks corresponding to the
+desired subject(s) and background(s). Hence, it cannot deal with
+images containing, for example, a strong illumination gradient.
+
+</p><p>Local adaptive thresholding, on the other hand, selects an individual
+threshold for each pixel based on the range of intensity values in its
+local neighborhood. This allows for thresholding of an image whose global
+intensity histogram doesn't contain distinctive peaks. 
+
+</p><p>A task well suited to local adaptive thresholding is in segmenting
+text from the image 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1.gif"><img alt="son1" src="./Point Operations - Adaptive Thresholding_files/son1.GIF"></a></blockquote>
+<p>  Because this image contains a
+strong illumination gradient, global thresholding produces a very
+poor result, as can be seen in 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1thr1.gif"><img alt="son1thr1" src="./Point Operations - Adaptive Thresholding_files/son1thr1.GIF"></a></blockquote>
+<p>
+
+</p><p>Using the <em>mean</em> of a 7×7 neighborhood, adaptive
+thresholding yields 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1adp1.gif"><img alt="son1adp1" src="./Point Operations - Adaptive Thresholding_files/son1adp1.GIF"></a></blockquote>
+<p> The method succeeds in the
+area surrounding the text because there are enough foreground and
+background pixels in the local neighborhood of each pixel; <em>i.e.</em> the
+mean value lies between the intensity values of foreground and
+background and, therefore, separates easily. On the margin, however,
+the <em>mean</em> of the local area is not suitable as a threshold,
+because the range of intensity values within a local neighborhood is
+very small and their <em>mean</em> is close to the value of the center pixel.
+
+</p><p>The situation can be improved if the threshold employed is not the
+<em>mean</em>, but <em>(mean-C)</em>, where <em>C</em>
+is a constant. Using this statistic, all pixels which exist in a
+uniform neighborhood (<em>e.g.</em> along the margins) are set to background.
+The result for a 7×7 neighborhood and <em>C=7</em> is shown in
+
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1adp2.gif"><img alt="son1adp2" src="./Point Operations - Adaptive Thresholding_files/son1adp2.GIF"></a></blockquote>
+<p> and for a 75×75 neighborhood and <em>C=10</em>
+in 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1adp3.gif"><img alt="son1adp3" src="./Point Operations - Adaptive Thresholding_files/son1adp3.GIF"></a></blockquote>
+<p> The larger window yields the poorer
+result, because it is more adversely affected by the illumination
+gradient. Also note that the latter is more computationally intensive
+than thresholding using the smaller window.
+
+</p><p>The result of using the <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/median.htm">median</a> instead of the <em>mean</em>
+can be seen in 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1adp4.gif"><img alt="son1adp4" src="./Point Operations - Adaptive Thresholding_files/son1adp4.GIF"></a></blockquote>
+<p> (The neighborhood size for this
+example is 7×7 and C = 4). The result shows that, in this
+application, the median is a less suitable statistic than the mean.
+
+</p><p>Consider another example image containing a strong illumination
+gradient 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/wdg3.gif"><img alt="wdg3" src="./Point Operations - Adaptive Thresholding_files/wdg3.GIF"></a></blockquote>
+<p> This image can not be segmented with a
+global threshold, as shown in 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/wdg3thr1.gif"><img alt="wdg3thr1" src="./Point Operations - Adaptive Thresholding_files/wdg3thr1.GIF"></a></blockquote>
+<p> where a threshold
+of 80 was used. However, since the image contains a large object, it
+is hard to apply adaptive thresholding, as well. Using the
+<em>(mean - C)</em> as a local threshold, we obtain 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/wdg3adp1.gif"><img alt="wdg3adp1" src="./Point Operations - Adaptive Thresholding_files/wdg3adp1.GIF"></a></blockquote>
+<p> with
+a 7×7 window and C = 4, and 
+</p><blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/wdg3adp2.gif"><img alt="wdg3adp2" src="./Point Operations - Adaptive Thresholding_files/wdg3adp2.GIF"></a></blockquote>
+<p> with a
+140×140 window and C = 8. All pixels which belong to the object
+but do not have any background pixels in their neighborhood are set
+to background. The latter image shows a much better result than that
+achieved with a global threshold, but it is still missing some pixels
+in the center of the object. In many applications, computing the mean
+of a neighborhood (for each pixel!) whose size is of the order
+140×140 may take too much time. In this case, the more complex
+<em>Chow and Kaneko</em> approach to adaptive thresholding would be more
+successful.
+
+</p><p>If your image processing package does not contain an adaptive
+threshold operator, you can simulate the effect with the following
+steps:
+
+</p><p></p><ol>
+<li> Convolve the image with a suitable statistical operator, <em>i.e.</em> the <em>mean</em> or <em>median</em>.
+</li><li> Subtract the original from the convolved image.
+</li><li> Threshold the difference image with <em>C</em>.
+</li><li> Invert the thresholded image.
+</li></ol>
+
+<p>
+    </p><h2>Interactive Experimentation</h2>
+
+<p>    You can interactively experiment with this operator by clicking
+    <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/adapthreshdemo.htm">here</a>.
+
+</p><p>
+</p><h2>Exercises</h2>
+<ol>
+<li> In the above example using 
+<blockquote><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/images/son1.gif"><img alt="son1" src="./Point Operations - Adaptive Thresholding_files/son1.GIF"></a></blockquote>
+<p> why does the
+<em>mean</em> produce a better result than the <em>median</em>? Can you think
+of any example where the <em>median</em> is more appropriate?
+
+</p><p></p></li><li> Think of an appropriate statistic for finding dark cracks on a
+light object using adaptive thresholding.
+
+<p></p></li><li> If you want to recover text from an image with a strong
+illumination gradient, how does the local thresholding method relate
+to the technique of removing the illumination gradient using
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/pixsub.htm">pixel subtraction</a>? Compare the results achieved with
+adaptive thresholding, pixel subtraction and <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/pixdiv.htm">pixel
+division</a>.
+</li></ol>
+
+<p></p><h2>References</h2>
+
+<p><strong>E. Davies</strong> <em>Machine Vision: Theory, Algorithms and
+Practicalities</em>, Academic Press, 1990, pp 91 - 96.
+
+</p><p><strong>R. Gonzales and R. Woods</strong> <em>Digital Image Processing</em>,
+Addison-Wesley Publishing Company, 1992, pp 443 - 452.  
+
+</p><p><strong>A. Jain</strong> <em>Fundamentals of Digital Image Processing</em>, 
+Prentice-Hall, 1986, p 408.
+
+</p><p><strong>C.K. Chow and T. Kaneko</strong>
+Automatic Boundary Detection of the Left Ventricle from Cineangiograms,
+Comp. Biomed. Res.(5), 1972, pp. 388-410.
+
+</p><p></p><h2>Local Information</h2>
+
+<p>Specific information about this operator may be found
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/local/adpthrsh.txt">here.</a>
+
+</p><p>More general advice about the local HIPR installation is available in the
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/local.htm"><em>Local Information</em></a> introductory section.
+
+</p><p>
+
+
+
+
+
+</p><p></p><center><img alt="---" src="./Point Operations - Adaptive Thresholding_files/line2.gif" width="75%" height="4"></center><br>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/hipr_top.htm"><img alt="home" src="./Point Operations - Adaptive Thresholding_files/home.gif"></a>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm"><img alt="left" src="./Point Operations - Adaptive Thresholding_files/left.gif"></a>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/stretch.htm"><img alt="right" src="./Point Operations - Adaptive Thresholding_files/right.gif"></a>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/pntops.htm"><img alt="up" src="./Point Operations - Adaptive Thresholding_files/up.gif"></a><br><br>
+<p>
+<a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/copyrght.htm">©2003 R.&nbsp;Fisher, S.&nbsp;Perkins, 
+A.&nbsp;Walker and E.&nbsp;Wolfart.</a><br>
+</p><p><a href="http://validator.w3.org/">
+         <img border="0" src="./Point Operations - Adaptive Thresholding_files/vh40.gif" alt="Valid HTML 4.0!" height="31" width="88"></a>
+
+</p></body></html>

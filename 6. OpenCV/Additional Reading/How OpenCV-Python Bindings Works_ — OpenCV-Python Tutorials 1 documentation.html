@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!-- saved from url=(0123)https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How OpenCV-Python Bindings Works? — OpenCV-Python Tutorials 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+        <link rel="index" title="Index" href="https://opencv-python-tutroals.readthedocs.io/en/latest/genindex.html">
+        <link rel="search" title="Search" href="https://opencv-python-tutroals.readthedocs.io/en/latest/search.html">
+    <link rel="top" title="OpenCV-Python Tutorials 1 documentation" href="https://opencv-python-tutroals.readthedocs.io/en/latest/index.html">
+        <link rel="up" title="OpenCV-Python Bindings" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_table_of_contents_bindings/py_table_of_contents_bindings.html">
+        <link rel="prev" title="OpenCV-Python Bindings" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_table_of_contents_bindings/py_table_of_contents_bindings.html"> 
+
+  
+  <script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/display.js.download"></script><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/pro"></script><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/l.js.download"></script><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/l.js(1).download"></script><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/l.js(2).download"></script><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/l.js(3).download"></script><script type="text/javascript" async="" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/ga.js.download"></script><script src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/modernizr.min.js.download"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html">
+
+<link rel="stylesheet" href="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/readthedocs-data.js.download"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/readthedocs-dynamic-include.js.download"></script>
+
+<!-- end RTD <extrahead> --><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/ga.js(1).download"></script><script async="" type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/pops"></script><script async="" type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/pops(1)"></script><script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/jquery.min.js.download"></script></head>
+
+<body class="wy-body-for-nav" role="document" style="">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://opencv-python-tutroals.readthedocs.io/en/latest/index.html" class="icon icon-home"> OpenCV-Python Tutorials
+          
+
+          
+            
+            <img src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/opencv-logo-white.png" class="logo">
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://opencv-python-tutroals.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html"><span class="toctree-expand"></span>OpenCV-Python Tutorials</a><ul class="">
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html">Introduction to OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_table_of_contents_gui/py_table_of_contents_gui.html">Gui Features in OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_table_of_contents_core/py_table_of_contents_core.html">Core Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_table_of_contents_imgproc/py_table_of_contents_imgproc.html">Image Processing in OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_table_of_contents_feature2d/py_table_of_contents_feature2d.html">Feature Detection and Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_video/py_table_of_contents_video/py_table_of_contents_video.html">Video Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_calib3d/py_table_of_contents_calib3d/py_table_of_contents_calib3d.html">Camera Calibration and 3D Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_ml/py_table_of_contents_ml/py_table_of_contents_ml.html">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_photo/py_table_of_contents_photo/py_table_of_contents_photo.html">Computational Photography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_table_of_contents_objdetect/py_table_of_contents_objdetect.html">Object Detection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_table_of_contents_bindings/py_table_of_contents_bindings.html"><span class="toctree-expand"></span>OpenCV-Python Bindings</a><ul class="">
+<li class="toctree-l3 current"><a class="reference internal current" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#"><span class="toctree-expand"></span>How OpenCV-Python Bindings Works?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#goal">Goal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#how-opencv-python-bindings-are-generated">How OpenCV-Python bindings are generated?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#how-to-extend-new-modules-to-python">How to extend new modules to Python?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      <div id="rtd-dncam6fqh" class="ethical-rtd ethical-dark-theme"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://readthedocs.org/sustainability/click/567/XpAl5aoDjz0s/" rel="nofollow" target="_blank" class="ethical-image-link"><img src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/digitalocean-logo.png"></a><div class="ethical-text"><a href="https://readthedocs.org/sustainability/click/567/XpAl5aoDjz0s/" rel="nofollow" target="_blank"><strong>New: DigitalOcean Marketplace</strong> Self-host Gitlab, Grafana, 1-Click Apps.</a></div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div><img src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/saved_resource" style="display: none;"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://opencv-python-tutroals.readthedocs.io/en/latest/index.html">OpenCV-Python Tutorials</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/index.html">Docs</a> »</li>
+        
+          <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html">OpenCV-Python Tutorials</a> »</li>
+        
+          <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_table_of_contents_bindings/py_table_of_contents_bindings.html">OpenCV-Python Bindings</a> »</li>
+        
+      <li>How OpenCV-Python Bindings Works?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/abidrahmank/OpenCV2-Python-Tutorials/blob/master/source/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-opencv-python-bindings-works">
+<span id="bindings-basics"></span><h1>How OpenCV-Python Bindings Works?<a class="headerlink" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#how-opencv-python-bindings-works" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goal">
+<h2>Goal<a class="headerlink" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#goal" title="Permalink to this headline">¶</a></h2>
+<p>Learn:</p>
+<blockquote>
+<div><ul class="simple">
+<li>How OpenCV-Python bindings are generated?</li>
+<li>How to extend new OpenCV modules to Python?</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="how-opencv-python-bindings-are-generated">
+<h2>How OpenCV-Python bindings are generated?<a class="headerlink" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#how-opencv-python-bindings-are-generated" title="Permalink to this headline">¶</a></h2>
+<p>In OpenCV, all algorithms are implemented in C++. But these algorithms can be used from different languages like Python, Java etc. This is made possible by the bindings generators. These generators create a bridge between C++ and Python which enables users to call C++ functions from Python. To get a complete picture of what is happening in background, a good knowledge of Python/C API is required. A simple example on extending C++ functions to Python can be found in official Python documentation[1]. So extending all functions in OpenCV to Python by writing their wrapper functions manually is a time-consuming task. So OpenCV does it in a  more intelligent way. OpenCV generates these wrapper functions automatically from the C++ headers using some Python scripts which are located in <code class="docutils literal"><span class="pre">modules/python/src2</span></code>. We will look into what they do.</p>
+<p>First, <code class="docutils literal"><span class="pre">modules/python/CMakeFiles.txt</span></code> is a CMake script which checks the modules to be extended to Python. It will automatically check all the modules to be extended and grab their header files. These header files contain list of all classes, functions, constants etc. for that particular modules.</p>
+<p>Second, these header files are passed to a Python script, <code class="docutils literal"><span class="pre">modules/python/src2/gen2.py</span></code>. This is the Python bindings generator script. It calls another Python script <code class="docutils literal"><span class="pre">modules/python/src2/hdr_parser.py</span></code>. This is the header parser script. This header parser splits the complete header file into small Python lists. So these lists contain all details about a particular function, class etc. For example, a function will be parsed to get a list containing function name, return type, input arguments, argument types etc. Final list contains details of all the functions, structs, classes etc. in that header file.</p>
+<p>But header parser doesn’t parse all the functions/classes in the header file. The developer has to specify which functions should be exported to Python. For that, there are certain macros added to the beginning of these declarations which enables the header parser to identify functions to be parsed. These macros are added by the developer who programs the particular function. In short, the developer decides which functions should be extended to Python and which are not. Details of those macros will be given in next session.</p>
+<p>So header parser returns a final big list of parsed functions. Our generator script (gen2.py) will create wrapper functions for all the functions/classes/enums/structs parsed by header parser (You can find these header files during compilation in the <code class="docutils literal"><span class="pre">build/modules/python/</span></code> folder as <code class="docutils literal"><span class="pre">pyopencv_generated_*.h</span></code> files). But there may be some basic OpenCV datatypes like Mat, Vec4i, Size. They need to be extended manually. For example, a Mat type should be extended to Numpy array, Size should be extended to a tuple of two integers etc. Similarly, there may be some complex structs/classes/functions etc. which need to be extended manually. All such manual wrapper functions are placed in <code class="docutils literal"><span class="pre">modules/python/src2/pycv2.hpp</span></code>.</p>
+<p>So now only thing left is the compilation of these wrapper files which gives us <strong>cv2</strong> module. So when you call a function, say <code class="docutils literal"><span class="pre">res</span> <span class="pre">=</span> <span class="pre">equalizeHist(img1,img2)</span></code> in Python, you pass two numpy arrays and you expect another numpy array as the output. So these numpy arrays are converted to <code class="docutils literal"><span class="pre">cv::Mat</span></code> and then calls the <code class="docutils literal"><span class="pre">equalizeHist()</span></code> function in C++. Final result, <code class="docutils literal"><span class="pre">res</span></code> will be converted back into a Numpy array. So in short, almost all operations are done in C++ which gives us almost same speed as that of C++.</p>
+<p>So this is the basic version of how OpenCV-Python bindings are generated.</p>
+</div>
+<div class="section" id="how-to-extend-new-modules-to-python">
+<h2>How to extend new modules to Python?<a class="headerlink" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html#how-to-extend-new-modules-to-python" title="Permalink to this headline">¶</a></h2>
+<p>Header parser parse the header files based on some wrapper macros added to function declaration. Enumeration constants don’t need any wrapper macros. They are automatically wrapped. But remaining functions, classes etc. need wrapper macros.</p>
+<p>Functions are extended using <code class="docutils literal"><span class="pre">CV_EXPORTS_W</span></code> macro. An example is shown below.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">CV_EXPORTS_W</span> <span class="kt">void</span> <span class="nf">equalizeHist</span><span class="p">(</span> <span class="n">InputArray</span> <span class="n">src</span><span class="p">,</span> <span class="n">OutputArray</span> <span class="n">dst</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>Header parser can understand the input and output arguments from keywords like <code class="docutils literal"><span class="pre">InputArray,</span> <span class="pre">OutputArray</span></code> etc. But sometimes, we may need to hardcode inputs and outputs. For that, macros like <code class="docutils literal"><span class="pre">CV_OUT,</span> <span class="pre">CV_IN_OUT</span></code> etc. are used.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">CV_EXPORTS_W</span> <span class="kt">void</span> <span class="nf">minEnclosingCircle</span><span class="p">(</span> <span class="n">InputArray</span> <span class="n">points</span><span class="p">,</span>
+                                     <span class="n">CV_OUT</span> <span class="n">Point2f</span><span class="o">&amp;</span> <span class="n">center</span><span class="p">,</span> <span class="n">CV_OUT</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">radius</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>For large classes also, <code class="docutils literal"><span class="pre">CV_EXPORTS_W</span></code> is used. To extend class methods, <code class="docutils literal"><span class="pre">CV_WRAP</span></code> is used. Similarly, <code class="docutils literal"><span class="pre">CV_PROP</span></code> is used for class fields.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CV_EXPORTS_W</span> <span class="nl">CLAHE</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Algorithm</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">CV_WRAP</span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">apply</span><span class="p">(</span><span class="n">InputArray</span> <span class="n">src</span><span class="p">,</span> <span class="n">OutputArray</span> <span class="n">dst</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">CV_WRAP</span> <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">setClipLimit</span><span class="p">(</span><span class="kt">double</span> <span class="n">clipLimit</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">CV_WRAP</span> <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">getClipLimit</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Overloaded functions can be extended using <code class="docutils literal"><span class="pre">CV_EXPORTS_AS</span></code>. But we need to pass a new name so that each function will be called by that name in Python. Take the case of integral function below. Three functions are available, so each one is named with a suffix in Python. Similarly <code class="docutils literal"><span class="pre">CV_WRAP_AS</span></code> can be used to wrap overloaded methods.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">//! computes the integral image</span>
+<span class="n">CV_EXPORTS_W</span> <span class="kt">void</span> <span class="nf">integral</span><span class="p">(</span> <span class="n">InputArray</span> <span class="n">src</span><span class="p">,</span> <span class="n">OutputArray</span> <span class="n">sum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sdepth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">);</span>
+
+<span class="c1">//! computes the integral image and integral for the squared image</span>
+<span class="n">CV_EXPORTS_AS</span><span class="p">(</span><span class="n">integral2</span><span class="p">)</span> <span class="kt">void</span> <span class="n">integral</span><span class="p">(</span> <span class="n">InputArray</span> <span class="n">src</span><span class="p">,</span> <span class="n">OutputArray</span> <span class="n">sum</span><span class="p">,</span>
+                                        <span class="n">OutputArray</span> <span class="n">sqsum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sdepth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sqdepth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">);</span>
+
+<span class="c1">//! computes the integral image, integral for the squared image and the tilted integral image</span>
+<span class="n">CV_EXPORTS_AS</span><span class="p">(</span><span class="n">integral3</span><span class="p">)</span> <span class="kt">void</span> <span class="n">integral</span><span class="p">(</span> <span class="n">InputArray</span> <span class="n">src</span><span class="p">,</span> <span class="n">OutputArray</span> <span class="n">sum</span><span class="p">,</span>
+                                        <span class="n">OutputArray</span> <span class="n">sqsum</span><span class="p">,</span> <span class="n">OutputArray</span> <span class="n">tilted</span><span class="p">,</span>
+                                        <span class="kt">int</span> <span class="n">sdepth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sqdepth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>Small classes/structs are extended using <code class="docutils literal"><span class="pre">CV_EXPORTS_W_SIMPLE</span></code>. These structs are passed by value to C++ functions. Examples are KeyPoint, Match etc. Their methods are extended by <code class="docutils literal"><span class="pre">CV_WRAP</span></code> and fields are extended by <code class="docutils literal"><span class="pre">CV_PROP_RW</span></code>.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CV_EXPORTS_W_SIMPLE</span> <span class="n">DMatch</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">CV_WRAP</span> <span class="n">DMatch</span><span class="p">();</span>
+    <span class="n">CV_WRAP</span> <span class="nf">DMatch</span><span class="p">(</span><span class="kt">int</span> <span class="n">_queryIdx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">_trainIdx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">_distance</span><span class="p">);</span>
+    <span class="n">CV_WRAP</span> <span class="nf">DMatch</span><span class="p">(</span><span class="kt">int</span> <span class="n">_queryIdx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">_trainIdx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">_imgIdx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">_distance</span><span class="p">);</span>
+
+    <span class="n">CV_PROP_RW</span> <span class="kt">int</span> <span class="n">queryIdx</span><span class="p">;</span> <span class="c1">// query descriptor index</span>
+    <span class="n">CV_PROP_RW</span> <span class="kt">int</span> <span class="n">trainIdx</span><span class="p">;</span> <span class="c1">// train descriptor index</span>
+    <span class="n">CV_PROP_RW</span> <span class="kt">int</span> <span class="n">imgIdx</span><span class="p">;</span>   <span class="c1">// train image index</span>
+
+    <span class="n">CV_PROP_RW</span> <span class="kt">float</span> <span class="n">distance</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Some other small classes/structs can be exported using <code class="docutils literal"><span class="pre">CV_EXPORTS_W_MAP</span></code> where it is exported to a Python native dictionary. Moments() is an example of it.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CV_EXPORTS_W_MAP</span> <span class="n">Moments</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">//! spatial moments</span>
+    <span class="n">CV_PROP_RW</span> <span class="kt">double</span>  <span class="n">m00</span><span class="p">,</span> <span class="n">m10</span><span class="p">,</span> <span class="n">m01</span><span class="p">,</span> <span class="n">m20</span><span class="p">,</span> <span class="n">m11</span><span class="p">,</span> <span class="n">m02</span><span class="p">,</span> <span class="n">m30</span><span class="p">,</span> <span class="n">m21</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m03</span><span class="p">;</span>
+    <span class="c1">//! central moments</span>
+    <span class="n">CV_PROP_RW</span> <span class="kt">double</span>  <span class="n">mu20</span><span class="p">,</span> <span class="n">mu11</span><span class="p">,</span> <span class="n">mu02</span><span class="p">,</span> <span class="n">mu30</span><span class="p">,</span> <span class="n">mu21</span><span class="p">,</span> <span class="n">mu12</span><span class="p">,</span> <span class="n">mu03</span><span class="p">;</span>
+    <span class="c1">//! central normalized moments</span>
+    <span class="n">CV_PROP_RW</span> <span class="kt">double</span>  <span class="n">nu20</span><span class="p">,</span> <span class="n">nu11</span><span class="p">,</span> <span class="n">nu02</span><span class="p">,</span> <span class="n">nu30</span><span class="p">,</span> <span class="n">nu21</span><span class="p">,</span> <span class="n">nu12</span><span class="p">,</span> <span class="n">nu03</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>So these are the major extension macros available in OpenCV. Typically, a developer has to put proper macros in their appropriate positions. Rest is done by generator scripts. Sometimes, there may be an exceptional cases where generator scripts cannot create the wrappers. Such functions need to be handled manually. But most of the time, a code written according to OpenCV coding guidelines will be automatically wrapped by generator scripts.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_table_of_contents_bindings/py_table_of_contents_bindings.html" class="btn btn-neutral" title="OpenCV-Python Bindings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-4gt3gaqt" class="ethical-rtd"></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2013, Alexander Mordvintsev &amp; Abid K.
+      
+        <span class="commit">
+          Revision <code>43532856</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="https://opencv-python-tutroals.readthedocs.io/en/stable/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.html">stable</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://readthedocs.org/projects/opencv-python-tutroals/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/opencv-python-tutroals/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/opencv-python-tutroals/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/opencv-python-tutroals/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/opencv-python-tutroals/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/opencv-python-tutroals/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/abidrahmank/OpenCV2-Python-Tutorials/blob/master/source/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.rst">View</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/opencv-python-tutroals/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/jquery-2.0.3.min.js.download"></script>
+      <script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/jquery-migrate-1.2.1.min.js.download"></script>
+      <script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/doctools.js.download"></script>
+      <script type="text/javascript" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/readthedocs-doc-embed.js.download"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+<div id="rtd-3u8kuqls"></div><iframe style="display: none; visibility: hidden;" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/saved_resource.html"></iframe><iframe style="position:absolute;left:-999px;top:-999px;visibility:hidden" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/saved_resource(1).html"></iframe><iframe style="display: none; visibility: hidden;" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/saved_resource(2).html"></iframe><div style="position:absolute;top:-300px;left:-40px;width:1px;height:1px;"><iframe id="__l1__l" style="top:-300px;left:-400px;border:0px solid transparent !important;width:1px !important;height:1px !important;display:none;" seamless="" height="1px" border="0px" width="1px" src="./How OpenCV-Python Bindings Works_ — OpenCV-Python Tutorials 1 documentation_files/sto.html"></iframe></div></body></html>
