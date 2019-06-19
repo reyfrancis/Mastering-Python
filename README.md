@@ -17,15 +17,16 @@ Project state
 
 Contents
 --------
- * [Basic builtin codes](https://github.com/reyfrancis/Mastering-Python/tree/master/Basic_builtin)
- * [Working with files](https://github.com/reyfrancis/Mastering-Python/tree/master/File_example)
- * [Intermediate builtin codes](https://github.com/reyfrancis/Mastering-Python/tree/master/Intermediate_builtin)
- * [Object-Oriented Programming](https://github.com/reyfrancis/Mastering-Python/tree/master/OOP_lecture_by_Corey_Schafer)
- * [Book notes: Program Arcade Games](https://github.com/reyfrancis/Mastering-Python/tree/master/ProgramArcadeGames_by_Paul_Vincent_Craven)
- * [OpenCV Documentation: (https://docs.opencv.org)](https://github.com/reyfrancis/Mastering-Python/tree/master/OpenCV)
-   * [Image Files](https://github.com/reyfrancis/Mastering-Python/tree/master/OpenCV/Image%20Files)
-
-
+ * [1. Basic](https://github.com/reyfrancis/Mastering-Python/tree/master/Basic_builtin)
+ * [3. WorkingWithFiles](https://github.com/reyfrancis/Mastering-Python/tree/master/File_example)
+ * [2. Intermediate](https://github.com/reyfrancis/Mastering-Python/tree/master/Intermediate_builtin)
+ * [4. OOP__by_Corey_Schafer](https://github.com/reyfrancis/Mastering-Python/tree/master/4.%20OOP__by_Corey_Schafer)
+ * [5. ProgramArcadeGames_by_Paul_Vincent_Craven](https://github.com/reyfrancis/Mastering-Python/tree/master/5.%20ProgramArcadeGames_by_Paul_Vincent_Craven)
+ * [6. OpenCV](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV)
+   * [Additional Reading](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV/Additional%20Reading)
+   * [Image Files](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV/Image%20Files)
+   * [haarcascades](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV/haarcascades)
+  
 License
 -------
 GNU General Public License v3.0 (see [LICENSE.md](https://github.com/reyfrancis/Mastering-Python/blob/master/LICENSE))
