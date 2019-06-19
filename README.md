@@ -17,9 +17,9 @@ Project state
 
 Contents
 --------
- * [1. Basic](https://github.com/reyfrancis/Mastering-Python/tree/master/Basic_builtin)
- * [3. WorkingWithFiles](https://github.com/reyfrancis/Mastering-Python/tree/master/File_example)
- * [2. Intermediate](https://github.com/reyfrancis/Mastering-Python/tree/master/Intermediate_builtin)
+ * [1. Basic](https://github.com/reyfrancis/Mastering-Python/tree/master/1.%20Basic)
+ * [2. Intermediate](https://github.com/reyfrancis/Mastering-Python/tree/master/2.%20Intermediate)
+ * [3. WorkingWithFiles](https://github.com/reyfrancis/Mastering-Python/tree/master/3.%20WorkingWithFiles)
  * [4. OOP__by_Corey_Schafer](https://github.com/reyfrancis/Mastering-Python/tree/master/4.%20OOP__by_Corey_Schafer)
  * [5. ProgramArcadeGames_by_Paul_Vincent_Craven](https://github.com/reyfrancis/Mastering-Python/tree/master/5.%20ProgramArcadeGames_by_Paul_Vincent_Craven)
  * [6. OpenCV](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV)
