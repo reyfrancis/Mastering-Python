@@ -76,7 +76,7 @@ employee1.fullname()   # employee1 = Instance
 
 # 2. CLASS.METHOD(INSTANCE)
 Employee.fullname(employee1)   # Employee = Class
-                               # fullname = method
+                               # fullname = Method
                                # employee1 = Instance
 print('\n')
 

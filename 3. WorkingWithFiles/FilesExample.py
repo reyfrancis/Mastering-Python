@@ -181,8 +181,7 @@ print('mic check\n1, 2, 3\n1\n2\n3\n4\n5\nEND')
 
 
 # 14. Copying picture or other file extensions line by line
-# I have these 3 files. Bootstrap.mp4, Rey.jpg, PythonCookbook.pdf which I will make a copy using text
-# line by line.
+# I have these 3 files. Bootstrap.mp4, Rey.jpg, PythonCookbook.pdf which I will make a copy using text line by line.
 printTut()
 
 # However if we read them line by line, it will throw an error!

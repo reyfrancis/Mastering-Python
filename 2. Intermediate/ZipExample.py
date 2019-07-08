@@ -12,9 +12,8 @@ for a,b,c in zip(x,y, z):
 print('\n')
 
 
-# Also, aside from printing merged lists. 
-# Zip also creates a memory wher the merged list and this can be converted
-# to a list or tuple or dict
+# Also, aside from printing merged lists. Zip also creates a memory wher the merged list and this can be converted
+# to a list or tuple or dict.
 
 
 # 2. Converting to a list
@@ -29,7 +28,8 @@ print('\n')
 # 3. Converting to a dict
 new_dict = {}
 
-# for i in range(len(x)):
-# 	#TODO: append for a dict
-# 	new_dict.append(dict(zip(x, y))) 
-# print(new_dict)
+new_dict = {}
+
+for i in range(len(x)):
+	new_dict.update(dict(zip(x, y))) 
+print(new_dict)

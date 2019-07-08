@@ -1,5 +1,5 @@
-'''Tuples are very similar to list, however there values can't be changed. 
- Tuples can be made by using parenthesis instead of square brackets '''
+''' Tuples are very similar to list, however there values can't be changed. 
+ Tuples can be made by using parenthesis instead of square brackets. '''
 
 # 1. tuple = (1, 2, 3, 4)
 my_tuple = (1, 2, 3, 4, 'END')

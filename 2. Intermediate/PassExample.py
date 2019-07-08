@@ -1,5 +1,5 @@
 ''' Whenever we write code that have ':' on it and we want to leave 
-it empty for a while without commenting it out use pass '''
+it empty for a while without commenting it out use pass. '''
 
 i = 0
 

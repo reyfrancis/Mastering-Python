@@ -1,6 +1,6 @@
-'''Using For-Loop to iterate functions can be done, mainly by using.'''
+''' Using For-Loop to iterate functions can be done, mainly by using. '''
 
-def printHi():
+def printHi(): # This code block will be used throughout this file
     print('Hi')
 
 
@@ -14,9 +14,7 @@ print('\n')
 # However, we can also do it in 1 line of code:
 # 2. [function for i in range()]
 [printHi() for i in range(10)]
-# Just take note that we should enclose them in a bracket.
-# Sadly we can't use the print function inside the [function for i in range()] method.
-
+# Just take note that we should enclose them in a bracket. Sadly we can't use the print function inside the [function for i in range()] method.
 
 
 [print("Hi") for i in range(10)]

@@ -1,6 +1,6 @@
 ''' List are the one of the programming features that Python supports particularly well.
  If you use list in other programming language, you don't have quite the flexibility in Python.
- In much of programming, 'array' is the more general term rather than list '''
+ In much of programming, 'array' is the more general term rather than list. '''
 
 list1 = [1, 2, 3]
 list2 = [4, 5, 6, 7]
@@ -14,8 +14,7 @@ print('\n')
 
 
 # 2. list.append()
-# Using list.append adds another index from the last index of the list. Say the list has 5 indexes, that is,
-# list[0], list[1], ... list[4], then using append will create another index on list[5].
+# Using list.append adds another index from the last index of the list. Say the list has 5 indexes, that is, list[0], list[1], ... list[4], then using append will create another index on list[5].
 my_list.append(8)
 print(my_list)
 print('\n')

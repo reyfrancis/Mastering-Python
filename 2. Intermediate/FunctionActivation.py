@@ -1,6 +1,5 @@
-''' Explaining_FunctionActivation:
-To explain how local and global variables work, we should tackle how a function is initialized
-Having this simple code to get the maximum value '''
+''' To explain how local and global variables work, we should tackle how a function is initialized
+Having this simple code to get the maximum value. '''
 
 # def maxof(val1, val2):
 
@@ -17,14 +16,9 @@ b = 3
 # print(c)
 # print('\n')
 
-# When we run our program, the computer just read every def function and remember that its a function.
-# Then we get into the main program, these are the stuff outside functions.
-# In our example, the main program creates variables a = 2 and b = 3
-# Then, it calls def maxof or what we call Function Activation.
-# The value of both a and b are copied into val1 and val2. Remember 'COPIED'
-# val1 and val2 doesn't even know that a and b exist, they just copied the value which are 2 and 3
-# After executing the whole def maxof, the memory of val1 and val2 are now 'FREED' or 'DELETED'
-# Hence, any attempt to recover val1 and val2's values will throw an error since the values are already deleted
+'''
+When we run our program, the computer just read every def function and remember that its a function. Then we get into the main program, these are the stuff outside functions. In our example, the main program creates variables a = 2 and b = 3. Then, it calls def maxof or what we call Function Activation. The value of both a and b are copied into val1 and val2. Remember 'COPIED' val1 and val2 doesn't even know that a and b exist, they just copied the value which are 2 and 3. After executing the whole def maxof, the memory of val1 and val2 are now 'FREED' or 'DELETED'. Hence, any attempt to recover val1 and val2's values will throw an error since the values are already deleted.
+'''
 
 try:
     print(val1)
@@ -32,12 +26,9 @@ except NameError:
     print('val 1 is not defined!')
 print('\n')
 
-# See that instead of saying val1 has no value. It returns that val1 is not defined
-# Because val1 is a local variable which lurks inside the def maxof
-# So the outside of the def maxof will not know that val1 exists!
-
-# To solved this problem, we can use global variables. However we can't make val1 as global variable
-# Since it is already a local variable passed as argument inside a function
+'''
+See that instead of saying val1 has no value. It returns that val1 is not defined. Because val1 is a local variable which lurks inside the def maxof. So the outside of the def maxof will not know that val1 exists! To solved this problem, we can use global variables. However we can't make val1 as global variable. Since it is already a local variable passed as argument inside a function.
+'''
 
 # def maxof(local_variable, local_variable) 
 # And if we try to make val1 as global:

@@ -11,15 +11,13 @@ for item_number, each_item in enumerate(example):
 	print(item_number, each_item)
 new_list = enumerate(example)
 
-# The enumerate function returns a tuple of which, the first is the count and 
-# The second item is the value from the list.
+# The enumerate function returns a tuple of which, the first is the count and the second item is the value from the list.
 print('\n')
 
 example_dict = {'left':'<','right':'>','up':'^','down':'v',}
 print(example_dict)
 print('\n')
 
-# You can also make a dicitionary out of enumerate
-# by using 'dict(enumerate(some_list/dict))'
+# You can also make a dicitionary out of enumerate by using 'dict(enumerate(some_list/dict))'
 new_dict = dict(enumerate(example))
 print(new_dict)

@@ -15,5 +15,4 @@ def div_by_five(num):
 
 xyz = [i for i in input_list if div_by_five(i)]''', number=1000000))
 
-#To use time it. Comment all the code to run, then the "number =" refers to how many times
-#iterate the code
+# To use time it. Comment all the code to run, then the "number =" refers to how many times iterate the code.
