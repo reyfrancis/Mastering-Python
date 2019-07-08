@@ -1,0 +1,121 @@
+// Marketo multi-form embedding script
+// Updated: March 20, 2018
+
+// Include this script once, after all Marketo form elements
+// Do not mix with other Marketo embedding scripts!
+// Requires jQuery.
+
+// Comma-separate multiple form ids
+// 1114 is "Global Email Signup - Hidden Topic"
+var MKTO_IDS = [1114, 1172];
+
+// Set static Marketo values
+var MKTO_ID_PREFIX = 'mktoForm_',
+  MKTO_ID_ATTRNAME = 'data-formId',
+  MKTO_POD = '//app-ab24.marketo.com',
+  MKTO_MUNCHKIN = '107-FMS-070';
+
+if(typeof MktoForms2 != "undefined") {
+  // Load multiple forms of the same type
+  MKTO_IDS.forEach(function(formId) {
+    // If the formId is found on the current page, then load each form
+    if (document.querySelectorAll('[' + MKTO_ID_ATTRNAME + '="' + formId + '"]').length > 0) {
+      var loadForm = MktoForms2.loadForm.bind(MktoForms2, MKTO_POD, MKTO_MUNCHKIN, formId),
+        formEls = [].slice.call(document.querySelectorAll('[' + MKTO_ID_ATTRNAME + '="' + formId + '"]'));
+      
+      (function loadFormCb(formEls) {
+        var formEl = formEls.shift();
+        formEl.id = MKTO_ID_PREFIX + formId;
+
+        loadForm(function(form) {
+          formEl.id = '';
+          formEls.length && loadFormCb(formEls);
+        });
+      })(formEls);      
+    }
+  });
+
+  // Customize form when ready
+  $(function() {
+    MktoForms2.whenReady(function(form) {
+      //get the jQuery wrapped form element from Marketo
+      formElement = form.getFormElem();
+
+      if (formElement.hasClass('subscribe')) {
+        // Add smallContainer class to the form if it has an narrow width on load
+        if (formElement.width() > 100 && formElement.width() < 571) {
+          formElement.parent().addClass('smallContainer');
+        }
+
+        // Add value for topic field if included in subscribe form
+        if (formElement.attr('data-formTopic') != undefined) {
+          form.addHiddenFields({ "topic" : formElement.attr('data-formTopic') });
+        }
+
+        // Add class to each mktoFormRow based on their content
+        formElement.find('input[type="hidden"]').closest('.mktoFormRow').addClass('mktoHiddenRow');
+        formElement.find('#Email').first().closest('.mktoFormRow').addClass('mktoEmailRow');
+        formElement.find('#Country').first().closest('.mktoFormRow').addClass('mktoCountryRow');
+        var mktoConsentRow = formElement.find('.mktoPlaceholdermarketing_consent').first().closest('.mktoFormRow').addClass('mktoConsentRow');
+        var mktoButtonRow = formElement.find('.mktoButtonRow').first();
+        if (!formElement.parent().hasClass('smallContainer')) {
+          mktoConsentRow.insertAfter(mktoButtonRow);
+        }
+
+        // Add privacy link below subscribe form if there isn't an existing link nearby
+        if (formElement.parent().parent().find('[href*="oreilly.com/privacy"]').length < 1) {
+          formElement.after('<a href="https://www.oreilly.com/privacy.html" class="mktoPrivacyLink">Please read our Privacy Policy.</a>');
+        }
+
+        form.onValidate(function(isValid) {
+          if (isValid) {
+            // Check if marketing consent is a field
+            if (formElement.find('input[name=marketing_consent]').length > 0) {
+              var contextURL =  window.location.host + window.location.pathname;
+              form.setValues({ "marketing_consent_context" : 'email signup at ' + contextURL });
+            }
+            else {
+              var contextURL =  window.location.host + window.location.pathname;
+              form.setValues({ "marketing_consent_context" : 'email signup outside gdpr at ' + contextURL });
+            }
+          }
+        });
+
+        // Set custom thank-you message in subscribe form
+        form.onSuccess(function(){
+          formElement = form.getFormElem();
+          formElement.parent().find('.mktoPrivacyLink').remove();
+          if (formElement.find('input[name=marketing_consent]:checked').val() != "False") {
+            formElement.replaceWith('<span class="mktoThankYou">Thank you for subscribing.</span>');
+
+            //Push dataLayer event for Goggle Analytics
+            var emailTopic = '';
+            if (formElement.attr('data-formTopic') != undefined) {
+              emailTopic = formElement.attr('data-formTopic').toLowerCase(); 
+            }
+            var eventContext = 'topic sign up';
+            if (window.location.href.indexOf('oreilly.com/topics') > -1) {
+              eventContext = 'content'; 
+            }
+            else if (window.location.hostname.indexOf('conferences') > -1) {
+              eventContext = 'conference'; 
+            }
+            dataLayer.push({
+              'event': 'eventTracker',
+              'eventCat':'email sign up',
+              'eventAct':eventContext,
+              'eventLbl':emailTopic,
+              'eventVal':0,
+              'nonInteraction':0
+            });
+
+          }
+          else {
+            formElement.replaceWith('<span class="mktoThankYou">Thank you.</span>');
+          }
+          return false;
+        });
+      }
+    });
+  });
+}

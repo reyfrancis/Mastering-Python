@@ -1,0 +1,97 @@
+var showNewsletterPopup = true;
+function checkNLParam() {
+  //Check the url parameter for 'newsltr'
+  if (window.location.search.indexOf('newsltr') > -1) {
+    //If found, set a cookie to prevent popups
+    var nlPopupDate = new Date();
+    nlPopupDate.setTime(nlPopupDate.getTime()+(90*24*60*60*1000));
+    var nlPopupexpires = "; expires="+nlPopupDate.toGMTString();
+    document.cookie = "radarnewsletterpopup=viewed; " + nlPopupexpires + "; path=/";
+    showNewsletterPopup = false;
+  }
+}
+function checkNLCookie() {
+  //Loop through active cookies to find radarnewsletterpopup
+  var radarCookieArray = document.cookie.split(";");
+  var x,y;
+  for (var i = 0 ; i < radarCookieArray.length; i++) {
+    x = radarCookieArray[i].substr(0, radarCookieArray[i].indexOf("="));
+    y = radarCookieArray[i].substr(radarCookieArray[i].indexOf("=") + 1);
+    x = x.replace(/^\s+|\s+$/g,"");
+    if (x == "radarnewsletterpopup") {
+      if (y == "viewed") {
+        showNewsletterPopup = false;
+      }
+    }
+  }
+}
+function startNLPopup() {
+  var nlPopup = jQuery('#newsletter-popup');
+  if (showNewsletterPopup) {
+    setTimeout("nlShowPopup()", 3000);
+  }
+  jQuery('form').find('input[name*="email_addr"]').each(function() {
+    var defaultValue = jQuery(this).attr('value');
+    jQuery(this).focus(function() {
+      if (jQuery(this).attr('value') == defaultValue) {
+        jQuery(this).attr('value', '');
+      }
+    });
+    jQuery(this).blur(function() {
+      if (jQuery(this).attr('value') == '' || jQuery(this).attr('value') == ' ') {
+        jQuery(this).attr('value', defaultValue);
+      }
+    });
+  });
+  var nlPopupLoad = 0;
+  nlPopup.find('#newsletter-popup-frame').load(function() {
+    if (nlPopupLoad < 2) {
+      nlPopupLoad ++;
+    }
+    else {
+      nlPopup.find('#newsletter-popup-frame').css('opacity',0);
+      jQuery('#newsletter-popup-overlay').animate({ opacity: 0 }, 200, function() {
+        jQuery(this).css('display','none');
+      });
+    }
+  });
+}
+function nlShowPopup() {
+  var nlPopupDate = new Date();
+  nlPopupDate.setTime(nlPopupDate.getTime()+(90*24*60*60*1000));
+  var nlPopupexpires = "; expires="+nlPopupDate.toGMTString();
+  document.cookie = "radarnewsletterpopup=viewed; " + nlPopupexpires + "; path=/";
+  var nlPopupOverlay = jQuery('#newsletter-popup-overlay');
+  var nlPopup = jQuery('#newsletter-popup');
+  var nlPopupClose = nlPopup.find('a.close');
+  nlPopup.css('margin-top', (jQuery(window).scrollTop() + 140) + "px");
+  nlPopupOverlay.prependTo('body').css({'opacity':0, 'display':'block', 'height':jQuery('html').height()}).animate({'opacity':1}, 200);
+  function nlClosePopup() {
+    nlPopupOverlay.animate({'opacity':0}, 200, function() {
+      nlPopupOverlay.css('display','none');
+    });
+  }
+  nlPopupOverlay.click(function() {
+    nlClosePopup();
+  });
+  nlPopupClose.click(function(e) {
+    e.preventDefault();
+    nlClosePopup();
+  });
+  jQuery(document).keydown(function(e) {
+    if (e.which == 27) { //escape key
+      nlClosePopup();
+    }
+  });
+  nlPopup.click(function(event) {
+    event.stopPropagation();
+  });
+}
+jQuery(document).ready(function() {
+  checkNLParam();
+
+  if (jQuery('#newsletter-popup-overlay').length > 0) {
+    checkNLCookie();
+    startNLPopup();
+  }
+});
