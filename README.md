@@ -16,10 +16,10 @@ Project state
 
 Contents
 --------
- * [1. Basic](https://github.com/reyfrancis/Mastering-Python/tree/master/1.%20Basic)
- * [2. Intermediate](https://github.com/reyfrancis/Mastering-Python/tree/master/2.%20Intermediate)
- * [3. WorkingWithFiles](https://github.com/reyfrancis/Mastering-Python/tree/master/3.%20WorkingWithFiles)
- * [4. OOP__by_Corey_Schafer](https://github.com/reyfrancis/Mastering-Python/tree/master/4.%20OOP__by_Corey_Schafer)
+ * [1. Basic](https://github.com/reyfrancis/Mastering-Python/blob/master/1.%20Basic/Notebook/Basic.ipynb)
+ * [2. Intermediate](https://github.com/reyfrancis/Mastering-Python/blob/master/2.%20Intermediate/Notebook/Intermediate.ipynb)
+ * [3. WorkingWithFiles](https://github.com/reyfrancis/Mastering-Python/blob/master/3.%20WorkingWithFiles/Notebook/In%20Depth%20with%20Files.ipynb)
+ * [4. OOP__by_Corey_Schafer](https://github.com/reyfrancis/Mastering-Python/blob/master/4.%20OOP__by_Corey_Schafer/Notebook/Object%20Oriented%20Programming.ipynb)
  * [5. ProgramArcadeGames_by_Paul_Vincent_Craven](https://github.com/reyfrancis/Mastering-Python/tree/master/5.%20ProgramArcadeGames_by_Paul_Vincent_Craven)
  * [6. OpenCV](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV)
    * [Additional Reading](https://github.com/reyfrancis/Mastering-Python/tree/master/6.%20OpenCV/Additional%20Reading)
