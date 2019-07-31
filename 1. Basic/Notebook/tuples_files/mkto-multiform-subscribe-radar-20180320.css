@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+/* Hide Right Rail form on Mobile */
+@media only screen and (max-width: 950px) { #text-64, #text-65, #text-66, #text-67, #text-68 { display: none; } }
+
+/* Marketo Subscription Form CSS */
+.mktoForm.subscribe { width: 100% !important; padding: 0 !important; margin-left: auto; margin-right: auto; clear: both; }
+.mktoForm.subscribe .mktoFormRow { width: calc(100% - 137px); clear: none; display: inline-block; vertical-align: bottom; }
+/* hide row of hidden field */
+.mktoForm.subscribe .mktoFormRow:first-of-type { display: none; }
+.mktoForm.subscribe .mktoFieldDescriptor.mktoFormCol,
+.mktoForm.subscribe .mktoFieldDescriptor.mktoFormCol .mktoFieldWrap { width: 100% !important; float: none !important; }
+.mktoForm.subscribe .mktoFormRow .mktoClear { clear: none; display: none; }
+.mktoForm.subscribe label.mktoLabel { display: block; padding: 0 !important; margin-bottom: 4px; float: none !important; font-weight:normal !important; font-family:Arial,Helvetica,sans-serif !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale !important; font-size: 0.625rem; line-height: 1.5em !important; color: #b7b7b7; }
+.mktoForm.subscribe input[type=email] { width:100% !important; height: 3.5rem !important; padding: 20px 16px 20px !important; font-family:Arial,Helvetica,sans-serif !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale !important; font-size: 0.75rem !important; line-height: 1.4em !important; margin: 0 0 4px !important; border: 1px solid #b7b7b7 !important; border-radius: 2px; color: #3d3b49; white-space: normal; background: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+.mktoForm.subscribe input[type=hidden] { display: none; height: 0; width: 0; margin: 0 !important; }
+.mktoForm.subscribe .mktoRequiredField .mktoLabel .mktoAsterix { display: none; }
+.mktoForm.subscribe .mktoError { left: 10px; bottom: -80px !important; right: auto !important; }
+.mktoForm.subscribe .mktoOffset { float: left; height: 0 !important; width: 0 !important; }
+.mktoForm.subscribe .mktoButtonRow { display: inline-block; vertical-align: bottom; padding-left: 8px; }
+.mktoForm.subscribe .mktoButtonWrap.mktoSimple { margin: 0 !important; display: block; }
+.mktoForm.subscribe .mktoButtonWrap.mktoSimple .mktoButton { width: 100%; height: 3.5rem !important; padding: 19px 30px 19px !important; font-family:Arial,Helvetica,sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: block; margin: 0 0 4px !important; border:0 !important; border-radius: 2px !important; font-size: 0.875rem !important; line-height: 1.4em; font-weight: 700; color: #fff !important; white-space: normal; background: #d3002d !important; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.mktoForm.subscribe .mktoButtonWrap.mktoSimple .mktoButton:hover { background: #9f0027 !important; cursor: pointer; }
+
+.mktoForm-email.large { max-width: 800px !important; min-height: 4.9375rem; margin: 0 auto; }
+.mktoForm-email.large .mktoForm.subscribe .mktoFormRow { width: calc(100% - 137px); }
+.mktoForm-email.large .mktoForm.subscribe input[type=email] { height: 3.5rem !important; padding: 20px 16px 20px !important; }
+.mktoForm-email.large .mktoForm.subscribe .mktoButtonWrap.mktoSimple .mktoButton { height: 3.5rem !important; padding: 19px 30px 19px !important; }
+.mktoForm-email.large .mktoForm.subscribe .mktoError { bottom: -80px !important; }
+
+.mktoForm-email.medium { max-width: 600px !important; min-height: 4.4375rem; margin: 0 auto; }
+.mktoForm-email.medium .mktoForm.subscribe .mktoFormRow { width: calc(100% - 137px); }
+.mktoForm-email.medium .mktoForm.subscribe input[type=email] { height: 3rem !important; padding: 13px 16px 13px !important; }
+.mktoForm-email.medium .mktoForm.subscribe .mktoButtonWrap.mktoSimple .mktoButton { height: 3rem !important; padding: 15px 30px 15px !important; }
+.mktoForm-email.medium .mktoForm.subscribe .mktoError { bottom: -76px !important; }
+
+.mktoForm-email.small { max-width: 360px !important; min-height: 3.4375rem; margin: 0 auto; }
+.mktoForm-email.small .mktoForm.subscribe .mktoFormRow { width: calc(100% - 100px); }
+.mktoForm-email.small .mktoForm.subscribe input[type=email] { height: 2rem !important; padding: 4px 8px 4px !important; }
+.mktoForm-email.small .mktoForm.subscribe .mktoButtonWrap.mktoSimple .mktoButton { height: 2rem !important; padding: 4px 16px 4px !important; font-size: 0.75rem !important; }
+.mktoForm-email.small .mktoForm.subscribe .mktoError { bottom: -66px !important; }
+
+.mktoForm-email:after {  content: ""; height: 0; display: table; clear:both; }
+.mktoForm-email .mktoPrivacyLink { float: left; text-align: left; padding: 0; margin: 0; font-weight:normal; font-family:'guardian-text-oreilly',Guardian,open-sans,Helvetica,Arial,sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size: 0.625rem; line-height: 1.5em; color: #d3002d; text-decoration: none; }
+.mktoForm-email .mktoPrivacyLink:hover { color: #9f0027; text-decoration: underline; }
+
+.mktoForm-email .mktoThankYou { display: block; width: 100%; text-align: center; font-size: 1.5rem; line-height: 1.5em; padding: 30px 0 0 0; font-family:Arial,Helvetica,sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.mktoForm-email.large .mktoThankYou { font-size: 1.5rem; line-height: 1.5em; padding: 30px 0 0 0; }
+.mktoForm-email.medium .mktoThankYou { font-size: 1.2rem; line-height: 1.5em; padding: 30px 0 0 0; }
+.mktoForm-email.small .mktoThankYou { font-size: 1rem; line-height: 1.5em; padding: 20px 0 0 0; }
