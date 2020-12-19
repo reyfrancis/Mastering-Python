@@ -5,7 +5,7 @@
 [![Dependencies](https://img.shields.io/david/expressjs/express.svg)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-A personal Python notebook. Written compilation of builtin commands in Python both basic and intermediate level codes. Discussed a comprehensive look at Object-Oriented Programming and conventional programming techniques and norms. 
+A personal Python notebook. Written compilation of built-in commands in Python both basic and intermediate level codes. Discussed a comprehensive look at Object-Oriented Programming and conventional programming techniques and norms. 
 
 Contents
 --------
