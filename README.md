@@ -7,13 +7,6 @@
 
 A personal Python notebook. Written compilation of builtin commands in Python both basic and intermediate level codes. Discussed a comprehensive look at Object-Oriented Programming and conventional programming techniques and norms. 
 
-Project state
--------------
-**TODOs:**
-* Finish the book Program Arcade Games
-* Start learning Tensorflow
-* Learn ML, DL, AI math
-
 Contents
 --------
  * [1. Basic](https://github.com/reyfrancis/Mastering-Python/blob/master/1.%20Basic/Notebook/Basic.ipynb)
